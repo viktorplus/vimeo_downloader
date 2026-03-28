@@ -168,6 +168,23 @@ def lesson_dedupe_key(url: str) -> str:
     return f"url:{normalize_url(url)}"
 
 
+def has_vimeo_privacy_hash(url: str) -> bool:
+    """Return True when URL has Vimeo privacy hash (path /id/hash or query ?h=hash)."""
+    value = (url or "").strip()
+    if not value:
+        return False
+
+    # Canonical form: https://vimeo.com/<id>/<hash>
+    if re.search(r"vimeo\.com/\d{8,12}/[a-f0-9]{6,}(?:[?#]|$)", value, flags=re.IGNORECASE):
+        return True
+
+    # Player/raw form: ...?h=<hash>
+    if re.search(r"[?&]h=[a-f0-9]{6,}(?:[&#]|$)", value, flags=re.IGNORECASE):
+        return True
+
+    return False
+
+
 def dedupe_lessons(lessons: list[dict[str, str]]) -> list[dict[str, str]]:
     best_by_key: dict[str, dict[str, str]] = {}
     for lesson in lessons:
@@ -711,8 +728,8 @@ def update_lessons_file(
         if key in existing_by_url:
             old = existing_by_url[key]
             # Update URL if the fresh one contains a hash and the stored one doesn't
-            old_has_hash = re.search(r'/[a-f0-9]{6,}(?:[?#]|$)', old["url"])
-            new_has_hash = re.search(r'/[a-f0-9]{6,}(?:[?#]|$)', lesson["url"])
+            old_has_hash = has_vimeo_privacy_hash(old["url"])
+            new_has_hash = has_vimeo_privacy_hash(lesson["url"])
             if new_has_hash and not old_has_hash:
                 old["url"] = lesson["url"]
                 updated += 1
