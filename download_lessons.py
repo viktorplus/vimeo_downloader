@@ -165,38 +165,15 @@ def _candidate_download_urls(url: str) -> list[str]:
 def _build_attempts(base_opts: dict) -> list[dict]:
     """Return list of ydl_opts dicts to try, in order of preference.
 
-    Priority:
-    1. Plain — no cookies, no impersonation — works for hash-protected private videos
-    2. Impersonation only — for IPs with TLS fingerprint restrictions
-    3. Browser cookies (Edge/Chrome/Firefox) — for truly private videos without hash
-    4. Impersonation + browser cookies — last resort
+    1. Plain — works for hash-protected private videos
+    2. Impersonation — fallback for TLS-restricted IPs
     """
-    attempts: list[dict] = []
+    attempts: list[dict] = [dict(base_opts)]
 
-    # 1. Plain — fastest, most compatible
-    attempts.append(dict(base_opts))
-
-    # 2. Impersonation
     if _has_module("curl_cffi"):
-        target = ImpersonateTarget.from_str("chrome-120")
         a = dict(base_opts)
-        a["impersonate"] = target
+        a["impersonate"] = ImpersonateTarget.from_str("chrome-120")
         attempts.append(a)
-
-    # 3. Browser cookies (last resort — may print DPAPI/lock errors if browser is open)
-    for browser in ("edge", "chrome", "firefox"):
-        a = dict(base_opts)
-        a["cookiesfrombrowser"] = (browser,)
-        attempts.append(a)
-
-    # 4. Impersonation + browser cookies
-    if _has_module("curl_cffi"):
-        target = ImpersonateTarget.from_str("chrome-120")
-        for browser in ("edge", "chrome"):
-            a = dict(base_opts)
-            a["impersonate"] = target
-            a["cookiesfrombrowser"] = (browser,)
-            attempts.append(a)
 
     return attempts
 
