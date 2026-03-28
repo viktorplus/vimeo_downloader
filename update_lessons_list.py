@@ -6,17 +6,23 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import shutil
 import sys
+import tempfile
 from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
 from time import sleep, time
 from typing import Callable
 
-LESSONS_FILE = Path("lessons_list.txt")
+ROOT_DIR = Path(__file__).resolve().parent
+LESSONS_FILE = ROOT_DIR / "lessons_list.txt"
 RECORDS_URL = "https://lms.itcareerhub.de/local/airtable_schedule/records.php"
-BROWSER_STATE_DIR = Path(".browser_profiles")
+BROWSER_STATE_DIR = ROOT_DIR / ".browser_profiles"
+BROWSER_PROFILE_DIR = BROWSER_STATE_DIR / "edge_lms_sync"
 COOKIE_FILE = BROWSER_STATE_DIR / "lms_cookies.json"
+WEB_STORAGE_FILE = BROWSER_STATE_DIR / "lms_web_storage.json"
+PAGE_SNAPSHOT_DIR = BROWSER_STATE_DIR / "page_snapshots"
 
 
 def _report_progress(message: str, progress_cb: Callable[[str], None] | None = None) -> None:
@@ -58,6 +64,76 @@ def _save_cookies(driver, cookie_file: Path) -> int:
     cookie_file.parent.mkdir(parents=True, exist_ok=True)
     cookie_file.write_text(json.dumps(cookies, ensure_ascii=False, indent=2), encoding="utf-8")
     return len(cookies)
+
+
+def _load_web_storage(driver, storage_file: Path) -> int:
+    if not storage_file.exists():
+        return 0
+    try:
+        payload = json.loads(storage_file.read_text(encoding="utf-8"))
+    except Exception:
+        return 0
+
+    if not isinstance(payload, dict):
+        return 0
+
+    local_items = payload.get("localStorage", {})
+    session_items = payload.get("sessionStorage", {})
+    if not isinstance(local_items, dict):
+        local_items = {}
+    if not isinstance(session_items, dict):
+        session_items = {}
+
+    loaded = 0
+    for k, v in local_items.items():
+        try:
+            driver.execute_script("window.localStorage.setItem(arguments[0], arguments[1]);", str(k), str(v))
+            loaded += 1
+        except Exception:
+            pass
+    for k, v in session_items.items():
+        try:
+            driver.execute_script("window.sessionStorage.setItem(arguments[0], arguments[1]);", str(k), str(v))
+            loaded += 1
+        except Exception:
+            pass
+    return loaded
+
+
+def _save_web_storage(driver, storage_file: Path) -> int:
+    js = r"""
+    const dump = (s) => {
+      const out = {};
+      for (let i = 0; i < s.length; i++) {
+        const k = s.key(i);
+        out[k] = s.getItem(k);
+      }
+      return out;
+    };
+    return { localStorage: dump(window.localStorage), sessionStorage: dump(window.sessionStorage) };
+    """
+    try:
+        payload = driver.execute_script(js) or {}
+    except Exception:
+        return 0
+
+    storage_file.parent.mkdir(parents=True, exist_ok=True)
+    storage_file.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+
+    local_items = payload.get("localStorage", {}) if isinstance(payload, dict) else {}
+    session_items = payload.get("sessionStorage", {}) if isinstance(payload, dict) else {}
+    return len(local_items) + len(session_items)
+
+
+def _save_page_snapshot(driver, label: str) -> Path | None:
+    try:
+        PAGE_SNAPSHOT_DIR.mkdir(parents=True, exist_ok=True)
+        ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+        html_path = PAGE_SNAPSHOT_DIR / f"{ts}_{label}.html"
+        html_path.write_text(driver.page_source or "", encoding="utf-8")
+        return html_path
+    except Exception:
+        return None
 
 
 def normalize_url(url: str) -> str:
@@ -272,6 +348,7 @@ def scrape_lms_lessons(
 ) -> list[dict[str, str]]:
     try:
         from selenium import webdriver
+        from selenium.common.exceptions import WebDriverException
     except ImportError as exc:
         raise RuntimeError(
             "selenium не установлен. Запустите: pip install selenium"
@@ -279,18 +356,40 @@ def scrape_lms_lessons(
 
     options = webdriver.EdgeOptions()
     options.add_argument("--disable-blink-features=AutomationControlled")
+    options.add_argument(f"--user-data-dir={str(BROWSER_PROFILE_DIR)}")
+    options.add_argument("--profile-directory=Default")
+    options.add_argument("--no-first-run")
+    options.add_argument("--no-default-browser-check")
 
-    driver = webdriver.Edge(options=options)
+    fallback_temp_profile: Path | None = None
+    try:
+        driver = webdriver.Edge(options=options)
+    except WebDriverException:
+        # Fallback for profile lock issues when another Edge instance is running.
+        fallback_options = webdriver.EdgeOptions()
+        fallback_options.add_argument("--disable-blink-features=AutomationControlled")
+        fallback_temp_profile = Path(tempfile.mkdtemp(prefix="edge_lms_sync_"))
+        fallback_options.add_argument(f"--user-data-dir={str(fallback_temp_profile)}")
+        fallback_options.add_argument("--profile-directory=Default")
+        driver = webdriver.Edge(options=fallback_options)
+
     driver.set_script_timeout(10)
     try:
         BROWSER_STATE_DIR.mkdir(parents=True, exist_ok=True)
+        BROWSER_PROFILE_DIR.mkdir(parents=True, exist_ok=True)
         driver.get("https://lms.itcareerhub.de/")
         loaded_cookies = _load_cookies(driver, COOKIE_FILE)
         if loaded_cookies:
             _report_progress(f"Подгружены сохраненные cookies LMS: {loaded_cookies}.", progress_cb)
+        loaded_storage = _load_web_storage(driver, WEB_STORAGE_FILE)
+        if loaded_storage:
+            _report_progress(f"Подгружено элементов web storage LMS: {loaded_storage}.", progress_cb)
 
         _report_progress("Открываю страницу записей LMS...", progress_cb)
         driver.get(url)
+        snapshot = _save_page_snapshot(driver, "records_opened")
+        if snapshot:
+            _report_progress(f"Сохранен код страницы LMS: {snapshot}", progress_cb)
 
         _report_progress("Страница открыта. Выполните вход в LMS в окне браузера.", progress_cb)
 
@@ -365,6 +464,13 @@ def scrape_lms_lessons(
         saved_cookies = _save_cookies(driver, COOKIE_FILE)
         if saved_cookies:
             _report_progress(f"Сессия сохранена (cookies: {saved_cookies}).", progress_cb)
+        saved_storage = _save_web_storage(driver, WEB_STORAGE_FILE)
+        if saved_storage:
+            _report_progress(f"Сессия сохранена (web storage: {saved_storage}).", progress_cb)
+
+        snapshot = _save_page_snapshot(driver, "records_before_parse")
+        if snapshot:
+            _report_progress(f"Сохранен код страницы LMS: {snapshot}", progress_cb)
 
         js = r"""
         const table = document.querySelector('table');
@@ -548,6 +654,8 @@ def scrape_lms_lessons(
         _report_progress(f"Парсинг таблицы завершен. Получено строк: {len(rows)}.", progress_cb)
     finally:
         driver.quit()
+        if fallback_temp_profile:
+            shutil.rmtree(fallback_temp_profile, ignore_errors=True)
 
     cleaned: list[dict[str, str]] = []
     seen = set()
