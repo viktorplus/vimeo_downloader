@@ -1,0 +1,23 @@
+# Virtual environment
+.venv/
+
+# Downloaded videos
+videos/
+
+# Browser profiles (Edge/Chrome automation data)
+.browser_profiles/
+
+# yt-dlp download archive
+.downloaded
+
+# Registry files (generated at runtime)
+downloaded_lessons.json
+downloaded_lessons.txt
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Misc
+*.part
