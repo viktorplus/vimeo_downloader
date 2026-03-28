@@ -591,9 +591,17 @@ def update_lessons_file(
 
     existing_by_url = {lesson_dedupe_key(x["url"]): x for x in existing}
     added = 0
+    updated = 0
     for lesson in fresh:
         key = lesson_dedupe_key(lesson["url"])
         if key in existing_by_url:
+            old = existing_by_url[key]
+            # Update URL if the fresh one contains a hash and the stored one doesn't
+            old_has_hash = re.search(r'/[a-f0-9]{6,}(?:[?#]|$)', old["url"])
+            new_has_hash = re.search(r'/[a-f0-9]{6,}(?:[?#]|$)', lesson["url"])
+            if new_has_hash and not old_has_hash:
+                old["url"] = lesson["url"]
+                updated += 1
             continue
         existing.append(lesson)
         existing_by_url[key] = lesson
@@ -604,12 +612,13 @@ def update_lessons_file(
     _report_progress("Сохраняю обновленный lessons_list.txt...", progress_cb)
     output.write_text(render_lessons(existing), encoding="utf-8")
     _report_progress(
-        f"Готово. Найдено на LMS: {len(fresh)}, добавлено новых: {added}, всего в файле: {len(existing)}.",
+        f"Готово. Найдено на LMS: {len(fresh)}, добавлено новых: {added}, обновлено URL: {updated}, всего в файле: {len(existing)}.",
         progress_cb,
     )
     return {
         "found": len(fresh),
         "added": added,
+        "updated": updated,
         "total": len(existing),
         "removed_duplicates": removed_duplicates,
         "output": str(output),
