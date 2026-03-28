@@ -374,8 +374,10 @@ def scrape_lms_lessons(
             const value = String(raw || '').trim();
             if (!value) return '';
 
-            // Raw LMS data-whatever often looks like: 1177707919?h=f6e33e3541
-            const idWithHash = value.match(/^(\d{8,12})[^"'\s<>]*[?&]h=([a-f0-9]{6,})/i);
+            // Raw LMS data-whatever may appear either as a raw value or inside full HTML:
+            //   1177707919?h=f6e33e3541
+            //   ... data-whatever="1177707919?h=f6e33e3541" ...
+            const idWithHash = value.match(/(\d{8,12})[^"'\s<>]*[?&]h=([a-f0-9]{6,})/i);
             if (idWithHash) return `https://vimeo.com/${idWithHash[1]}/${idWithHash[2]}`;
 
             if (/^\d{8,12}$/.test(value)) return `https://vimeo.com/${value}`;
