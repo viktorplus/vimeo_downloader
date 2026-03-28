@@ -8,6 +8,7 @@ import json
 from datetime import datetime
 import re
 import threading
+import unicodedata
 import uuid
 from pathlib import Path
 from typing import Any
@@ -30,6 +31,14 @@ def sanitize_folder_name(name: str) -> str:
     value = re.sub(r"[\\/:*?\"<>|]", "_", name).strip()
     value = re.sub(r"\s+", " ", value)
     return value or "Other"
+
+
+def normalize_media_name(value: str) -> str:
+  text = unicodedata.normalize("NFKC", (value or "").strip()).casefold()
+  text = text.replace("_", " ")
+  text = re.sub(r"^[*•·\-\s]+", "", text)
+  text = re.sub(r"\s+", " ", text)
+  return text.strip()
 
 
 def clean_error_text(value: str) -> str:
@@ -125,6 +134,57 @@ def sync_registry_from_archive(registry: dict[str, dict[str, str]]) -> dict[str,
     return registry
 
 
+def sync_registry_from_existing_files(
+    registry: dict[str, dict[str, str]],
+    lessons: list[dict[str, str]],
+    output_root: Path = DEFAULT_OUTPUT_ROOT,
+) -> dict[str, dict[str, str]]:
+    if not output_root.exists():
+        return registry
+
+    changed = False
+    by_subject: dict[str, list[dict[str, str]]] = {}
+    for lesson in lessons:
+        by_subject.setdefault(sanitize_folder_name(lesson.get("subject", "")), []).append(lesson)
+
+    video_exts = {".mp4", ".mkv", ".webm", ".mov", ".avi", ".m4v"}
+    for file_path in output_root.rglob("*"):
+        if not file_path.is_file() or file_path.suffix.lower() not in video_exts:
+            continue
+
+        subject_name = file_path.parent.name
+        candidates = by_subject.get(subject_name, [])
+        if not candidates:
+            continue
+
+        file_name_norm = normalize_media_name(file_path.stem)
+        if not file_name_norm:
+            continue
+
+        for lesson in candidates:
+            key = lesson_key(lesson.get("url", ""))
+            if key in registry:
+                continue
+
+            title_norm = normalize_media_name(lesson.get("title", ""))
+            if not title_norm:
+                continue
+
+            if file_name_norm == title_norm or file_name_norm.startswith(title_norm) or title_norm in file_name_norm:
+                registry[key] = {
+                    "downloaded_at": datetime.fromtimestamp(file_path.stat().st_mtime).strftime("%d.%m.%Y %H:%M:%S"),
+                    "title": lesson.get("title", ""),
+                    "subject": lesson.get("subject", ""),
+                    "url": lesson.get("url", ""),
+                }
+                changed = True
+                break
+
+    if changed:
+        save_downloaded_registry(registry)
+    return registry
+
+
 def mark_lesson_downloaded(lesson: dict[str, str]) -> None:
     key = lesson_key(lesson.get("url", ""))
     if not key:
@@ -142,11 +202,12 @@ def mark_lesson_downloaded(lesson: dict[str, str]) -> None:
 
 
 def ensure_downloaded_registry_files() -> None:
-    with downloaded_lock:
-        registry = load_downloaded_registry()
-        registry = sync_registry_from_archive(registry)
-        if not DOWNLOADED_LESSONS_JSON.exists() or not DOWNLOADED_LESSONS_TXT.exists():
-            save_downloaded_registry(registry)
+  with downloaded_lock:
+    registry = load_downloaded_registry()
+    registry = sync_registry_from_archive(registry)
+    registry = sync_registry_from_existing_files(registry, lessons_cache)
+    if not DOWNLOADED_LESSONS_JSON.exists() or not DOWNLOADED_LESSONS_TXT.exists():
+      save_downloaded_registry(registry)
 
 
 def parse_lessons(path: Path) -> list[dict[str, str]]:
@@ -869,6 +930,7 @@ def index() -> str:
     with downloaded_lock:
         registry = load_downloaded_registry()
         registry = sync_registry_from_archive(registry)
+        registry = sync_registry_from_existing_files(registry, current_lessons)
         downloaded_keys = set(registry.keys())
 
     prepared_lessons: list[dict[str, str | bool]] = []
