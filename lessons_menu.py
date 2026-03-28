@@ -725,44 +725,52 @@ TEMPLATE = """
         if (row.style.display === "none") return;
         const btn = row.querySelector("button.btn");
         if (!btn) return;
-        const match = btn.getAttribute("onclick").match(/'([^']+)'/);
+        const onclick = btn.getAttribute("onclick");
+        if (!onclick) return; // already-downloaded rows have no onclick
+        const match = onclick.match(/'([^']+)'/);
         if (match) ids.push(match[1]);
       });
       return ids;
     }
 
     async function startBulkDownload() {
-      const lessonIds = getVisibleLessonIds();
-      if (!lessonIds.length) {
+      try {
+        const lessonIds = getVisibleLessonIds();
+        if (!lessonIds.length) {
+          bulkStatus.classList.add("error");
+          bulkStatus.textContent = "Нет видимых НЕскачанных уроков для скачивания";
+          return;
+        }
+
+        bulkStatus.classList.remove("error");
+        bulkStatus.textContent = `Запуск: ${lessonIds.length} уроков...`;
+        bulkBtn.disabled = true;
+
+        const payload = new URLSearchParams();
+        payload.set("lesson_ids", lessonIds.join(","));
+        payload.set("quality", document.getElementById("bulkQuality").value);
+        payload.set("output_root", outputRoot.value.trim() || "videos");
+
+        const resp = await fetch("/download-filtered", {
+          method: "POST",
+          headers: {"Content-Type": "application/x-www-form-urlencoded"},
+          body: payload.toString(),
+        });
+
+        const data = await resp.json();
+        if (!resp.ok) {
+          bulkStatus.classList.add("error");
+          bulkStatus.textContent = data.error || "Ошибка";
+          bulkBtn.disabled = false;
+          return;
+        }
+
+        pollBulkJob(data.job_id);
+      } catch (err) {
         bulkStatus.classList.add("error");
-        bulkStatus.textContent = "Нет видимых уроков для скачивания";
-        return;
-      }
-
-      bulkStatus.classList.remove("error");
-      bulkStatus.textContent = `Запуск: ${lessonIds.length} уроков...`;
-      bulkBtn.disabled = true;
-
-      const payload = new URLSearchParams();
-      payload.set("lesson_ids", lessonIds.join(","));
-      payload.set("quality", document.getElementById("bulkQuality").value);
-      payload.set("output_root", outputRoot.value.trim() || "videos");
-
-      const resp = await fetch("/download-filtered", {
-        method: "POST",
-        headers: {"Content-Type": "application/x-www-form-urlencoded"},
-        body: payload.toString(),
-      });
-
-      const data = await resp.json();
-      if (!resp.ok) {
-        bulkStatus.classList.add("error");
-        bulkStatus.textContent = data.error || "Ошибка";
+        bulkStatus.textContent = `Ошибка запуска: ${err?.message || "неизвестно"}`;
         bulkBtn.disabled = false;
-        return;
       }
-
-      pollBulkJob(data.job_id);
     }
 
     async function startSyncLessons() {
