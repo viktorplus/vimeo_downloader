@@ -18,7 +18,13 @@ winget install ffmpeg
 ### Установка зависимостей Python
 
 ```bash
-pip install yt-dlp
+pip install -r requirements.txt
+```
+
+Или вручную:
+
+```bash
+pip install flask yt-dlp selenium curl-cffi
 ```
 
 ---
