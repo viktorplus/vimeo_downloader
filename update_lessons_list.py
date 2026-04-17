@@ -4,7 +4,7 @@
 from __future__ import annotations
 
 import argparse
-import json
+import html as html_lib
 import re
 import shutil
 import sys
@@ -20,8 +20,6 @@ LESSONS_FILE = ROOT_DIR / "lessons_list.txt"
 RECORDS_URL = "https://lms.itcareerhub.de/local/airtable_schedule/records.php"
 BROWSER_STATE_DIR = ROOT_DIR / ".browser_profiles"
 BROWSER_PROFILE_DIR = BROWSER_STATE_DIR / "edge_lms_sync"
-COOKIE_FILE = BROWSER_STATE_DIR / "lms_cookies.json"
-WEB_STORAGE_FILE = BROWSER_STATE_DIR / "lms_web_storage.json"
 PAGE_SNAPSHOT_DIR = BROWSER_STATE_DIR / "page_snapshots"
 
 
@@ -29,100 +27,6 @@ def _report_progress(message: str, progress_cb: Callable[[str], None] | None = N
     print(message, flush=True)
     if progress_cb:
         progress_cb(message)
-
-
-def _load_cookies(driver, cookie_file: Path) -> int:
-    if not cookie_file.exists():
-        return 0
-
-    try:
-        payload = json.loads(cookie_file.read_text(encoding="utf-8"))
-    except Exception:
-        return 0
-
-    cookies = payload if isinstance(payload, list) else []
-    loaded = 0
-    for cookie in cookies:
-        if not isinstance(cookie, dict):
-            continue
-        data = dict(cookie)
-        data.pop("sameSite", None)
-        try:
-            driver.add_cookie(data)
-            loaded += 1
-        except Exception:
-            continue
-    return loaded
-
-
-def _save_cookies(driver, cookie_file: Path) -> int:
-    try:
-        cookies = driver.get_cookies() or []
-    except Exception:
-        return 0
-
-    cookie_file.parent.mkdir(parents=True, exist_ok=True)
-    cookie_file.write_text(json.dumps(cookies, ensure_ascii=False, indent=2), encoding="utf-8")
-    return len(cookies)
-
-
-def _load_web_storage(driver, storage_file: Path) -> int:
-    if not storage_file.exists():
-        return 0
-    try:
-        payload = json.loads(storage_file.read_text(encoding="utf-8"))
-    except Exception:
-        return 0
-
-    if not isinstance(payload, dict):
-        return 0
-
-    local_items = payload.get("localStorage", {})
-    session_items = payload.get("sessionStorage", {})
-    if not isinstance(local_items, dict):
-        local_items = {}
-    if not isinstance(session_items, dict):
-        session_items = {}
-
-    loaded = 0
-    for k, v in local_items.items():
-        try:
-            driver.execute_script("window.localStorage.setItem(arguments[0], arguments[1]);", str(k), str(v))
-            loaded += 1
-        except Exception:
-            pass
-    for k, v in session_items.items():
-        try:
-            driver.execute_script("window.sessionStorage.setItem(arguments[0], arguments[1]);", str(k), str(v))
-            loaded += 1
-        except Exception:
-            pass
-    return loaded
-
-
-def _save_web_storage(driver, storage_file: Path) -> int:
-    js = r"""
-    const dump = (s) => {
-      const out = {};
-      for (let i = 0; i < s.length; i++) {
-        const k = s.key(i);
-        out[k] = s.getItem(k);
-      }
-      return out;
-    };
-    return { localStorage: dump(window.localStorage), sessionStorage: dump(window.sessionStorage) };
-    """
-    try:
-        payload = driver.execute_script(js) or {}
-    except Exception:
-        return 0
-
-    storage_file.parent.mkdir(parents=True, exist_ok=True)
-    storage_file.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
-
-    local_items = payload.get("localStorage", {}) if isinstance(payload, dict) else {}
-    session_items = payload.get("sessionStorage", {}) if isinstance(payload, dict) else {}
-    return len(local_items) + len(session_items)
 
 
 def _save_page_snapshot(driver, label: str) -> Path | None:
@@ -395,12 +299,6 @@ def scrape_lms_lessons(
         BROWSER_STATE_DIR.mkdir(parents=True, exist_ok=True)
         BROWSER_PROFILE_DIR.mkdir(parents=True, exist_ok=True)
         driver.get("https://lms.itcareerhub.de/")
-        loaded_cookies = _load_cookies(driver, COOKIE_FILE)
-        if loaded_cookies:
-            _report_progress(f"Подгружены сохраненные cookies LMS: {loaded_cookies}.", progress_cb)
-        loaded_storage = _load_web_storage(driver, WEB_STORAGE_FILE)
-        if loaded_storage:
-            _report_progress(f"Подгружено элементов web storage LMS: {loaded_storage}.", progress_cb)
 
         _report_progress("Открываю страницу записей LMS...", progress_cb)
         driver.get(url)
@@ -477,13 +375,6 @@ def scrape_lms_lessons(
                     "Не удалось дождаться строк с Vimeo в таблице LMS. "
                     "Проверьте вход в кабинет и доступ к записям."
                 )
-
-        saved_cookies = _save_cookies(driver, COOKIE_FILE)
-        if saved_cookies:
-            _report_progress(f"Сессия сохранена (cookies: {saved_cookies}).", progress_cb)
-        saved_storage = _save_web_storage(driver, WEB_STORAGE_FILE)
-        if saved_storage:
-            _report_progress(f"Сессия сохранена (web storage: {saved_storage}).", progress_cb)
 
         snapshot = _save_page_snapshot(driver, "records_before_parse")
         if snapshot:
@@ -696,11 +587,45 @@ def scrape_lms_lessons(
     return cleaned
 
 
-def update_lessons_file(
-    output: Path = LESSONS_FILE,
-    records_url: str = RECORDS_URL,
-    prompt_for_enter: bool = True,
-    timeout_sec: int = 900,
+def _clean_html_cell(raw: str) -> str:
+    value = re.sub(r"<[^>]+>", " ", raw)
+    value = html_lib.unescape(value)
+    return re.sub(r"\s+", " ", value).strip()
+
+
+def parse_lessons_from_html(text: str) -> list[dict[str, str]]:
+    """Парсит локально сохраненный HTML страницы records.php.
+
+    Возвращает уроки в том же формате что и scrape_lms_lessons.
+    """
+    row_pattern = re.compile(r"<tr\b[^>]*>(.*?)</tr>", re.DOTALL | re.IGNORECASE)
+    td_pattern = re.compile(r"<td[^>]*>(.*?)</td>", re.DOTALL | re.IGNORECASE)
+    btn_pattern = re.compile(r'data-whatever="(\d+)\?h=([a-f0-9]+)"', re.IGNORECASE)
+
+    lessons: list[dict[str, str]] = []
+    for row_match in row_pattern.finditer(text):
+        row = row_match.group(1)
+        btn = btn_pattern.search(row)
+        if not btn:
+            continue
+        vid_id, vid_hash = btn.groups()
+        cells = td_pattern.findall(row)
+        if len(cells) < 6:
+            continue
+        lessons.append({
+            "url": f"https://vimeo.com/{vid_id}/{vid_hash}",
+            "title": _clean_html_cell(cells[1]),
+            "subject": _clean_html_cell(cells[2]),
+            "teacher": _clean_html_cell(cells[3]),
+            "date": _clean_html_cell(cells[4]),
+        })
+    return lessons
+
+
+def _merge_and_write(
+    fresh: list[dict[str, str]],
+    output: Path,
+    source_label: str,
     progress_cb: Callable[[str], None] | None = None,
 ) -> dict[str, int | str]:
     _report_progress("Читаю текущий lessons_list.txt...", progress_cb)
@@ -713,12 +638,6 @@ def update_lessons_file(
     )
     if removed_duplicates > 0:
         _report_progress(f"Удалено дублей из текущего списка: {removed_duplicates}.", progress_cb)
-    fresh = scrape_lms_lessons(
-        records_url,
-        prompt_for_enter=prompt_for_enter,
-        timeout_sec=timeout_sec,
-        progress_cb=progress_cb,
-    )
 
     existing_by_url = {lesson_dedupe_key(x["url"]): x for x in existing}
     added = 0
@@ -727,7 +646,6 @@ def update_lessons_file(
         key = lesson_dedupe_key(lesson["url"])
         if key in existing_by_url:
             old = existing_by_url[key]
-            # Update URL if the fresh one contains a hash and the stored one doesn't
             old_has_hash = has_vimeo_privacy_hash(old["url"])
             new_has_hash = has_vimeo_privacy_hash(lesson["url"])
             if new_has_hash and not old_has_hash:
@@ -743,7 +661,8 @@ def update_lessons_file(
     _report_progress("Сохраняю обновленный lessons_list.txt...", progress_cb)
     output.write_text(render_lessons(existing), encoding="utf-8")
     _report_progress(
-        f"Готово. Найдено на LMS: {len(fresh)}, добавлено новых: {added}, обновлено URL: {updated}, всего в файле: {len(existing)}.",
+        f"Готово. Найдено в {source_label}: {len(fresh)}, добавлено новых: {added}, "
+        f"обновлено URL: {updated}, всего в файле: {len(existing)}.",
         progress_cb,
     )
     return {
@@ -754,6 +673,34 @@ def update_lessons_file(
         "removed_duplicates": removed_duplicates,
         "output": str(output),
     }
+
+
+def update_lessons_file(
+    output: Path = LESSONS_FILE,
+    records_url: str = RECORDS_URL,
+    prompt_for_enter: bool = True,
+    timeout_sec: int = 900,
+    progress_cb: Callable[[str], None] | None = None,
+) -> dict[str, int | str]:
+    fresh = scrape_lms_lessons(
+        records_url,
+        prompt_for_enter=prompt_for_enter,
+        timeout_sec=timeout_sec,
+        progress_cb=progress_cb,
+    )
+    return _merge_and_write(fresh, output, "LMS", progress_cb)
+
+
+def update_lessons_from_html_file(
+    html_file: Path,
+    output: Path = LESSONS_FILE,
+    progress_cb: Callable[[str], None] | None = None,
+) -> dict[str, int | str]:
+    _report_progress(f"Читаю локальный HTML: {html_file}", progress_cb)
+    text = html_file.read_text(encoding="utf-8")
+    fresh = parse_lessons_from_html(text)
+    _report_progress(f"В HTML найдено записей: {len(fresh)}.", progress_cb)
+    return _merge_and_write(fresh, output, "HTML", progress_cb)
 
 
 def render_lessons(lessons: list[dict[str, str]]) -> str:
@@ -792,15 +739,27 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Обновить lessons_list.txt новыми видео из LMS")
     parser.add_argument("--records-url", default=RECORDS_URL, help="URL страницы с записями")
     parser.add_argument("--output", default=str(LESSONS_FILE), help="Файл списка уроков")
+    parser.add_argument(
+        "--html-file",
+        help="Парсить локально сохраненный HTML вместо запуска браузера",
+    )
     args = parser.parse_args()
 
-    stats = update_lessons_file(
-        output=Path(args.output),
-        records_url=args.records_url,
-        prompt_for_enter=True,
-    )
+    if args.html_file:
+        stats = update_lessons_from_html_file(
+            html_file=Path(args.html_file),
+            output=Path(args.output),
+        )
+        source = "HTML-файле"
+    else:
+        stats = update_lessons_file(
+            output=Path(args.output),
+            records_url=args.records_url,
+            prompt_for_enter=True,
+        )
+        source = "LMS"
 
-    print(f"Найдено на LMS: {stats['found']}")
+    print(f"Найдено в {source}: {stats['found']}")
     print(f"Добавлено новых: {stats['added']}")
     print(f"Итого в файле: {stats['total']}")
     print(f"Сохранено: {stats['output']}")
