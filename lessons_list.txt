@@ -1,6 +1,6 @@
-﻿================================================================================
+================================================================================
 ЗАПИСИ ЗАНЯТИЙ — itcareerhub.de
-Всего уроков: 257
+Всего уроков: 274
 ================================================================================
 
 ================================================================================
@@ -8,85 +8,96 @@
 ================================================================================
   [24.03.2026] Встреча Q&A с руководителем Карьерного Центра
     Преподаватель: Berkivska Antonina
-    Видео: https://vimeo.com/1176647560
+    Видео: https://vimeo.com/1176647560/4ce31c7f0b
 
   [24.09.2025] Встреча с карьерным центром: Как быть хорошим удаленным сотрудником? Приглашенный эксперт - Elena Ladushyna, компания "Product People"
     Преподаватель: Berkivska Antonina
-    Видео: https://vimeo.com/1121575450
+    Видео: https://vimeo.com/1121575450/db7abf3d54
 
   [26.06.2025] Вебинар по софт-скиллс с экспертом рынка труда Германии и США рекрутером из Amazon Викторией Сятковской
     Преподаватель: 
-    Видео: https://vimeo.com/1097810238
+    Видео: https://vimeo.com/1097810238/0bc0d033ef
 
   [18.03.2025] Вебинар по софт скиллс: как искать работу через нетворк? Знакомство с комьюнити Women in Big Data
     Преподаватель: Berkivska Antonina
-    Видео: https://vimeo.com/1067707031
+    Видео: https://vimeo.com/1067707031/665bb7f4a2
 
   [16.12.2024] Как искать вакансии и строить стратегию поиска? Советы от профессионального сёрчера Елены Петуховой
     Преподаватель: 
-    Видео: https://vimeo.com/1039730432
+    Видео: https://vimeo.com/1039730432/82a286a7d1
 
   [02.12.2024] Вебинар по развитию Soft Skills: как использовать нетворкинг для поиска работы?
     Преподаватель: 
-    Видео: https://vimeo.com/1035260702
+    Видео: https://vimeo.com/1035260702/5ded0df7b1
 
   [10.10.2024] Как преодолеть культурные отличия при выходе на работу в новой стране?
     Преподаватель: 
-    Видео: https://vimeo.com/1018367055
+    Видео: https://vimeo.com/1018367055/9178c9f884
 
   [19.09.2024] Поиск работы как навык: зачем этому учиться?
     Преподаватель: 
-    Видео: https://vimeo.com/1011035123
+    Видео: https://vimeo.com/1011035123/e1508b2609
 
   [11.09.2024] Bilder und Videos mit KI erstellen
     Преподаватель: 
-    Видео: https://vimeo.com/1009119285
+    Видео: https://vimeo.com/1009119285/5d254b597e
 
   [05.09.2024] Вебинар про корпоративную культуру в немецких IT-компаниях
     Преподаватель: 
-    Видео: https://vimeo.com/1006652924
+    Видео: https://vimeo.com/1006652924/5fe26579e9
 
   [24.07.2024] Как проходит рабочий день IT специалиста
     Преподаватель: Pareiko Vladislav, Terentyeva Ekaterina
-    Видео: https://vimeo.com/989627577
+    Видео: https://vimeo.com/989627577/7d7537fbeb
 
   [20.06.2024] Einführung in Web3 und Blockchain für Anfänger
     Преподаватель: 
-    Видео: https://vimeo.com/967951880
+    Видео: https://vimeo.com/967951880/4a64311c43
 
   [13.06.2024] Воркшоп по трудойстроству на рынке Германии
     Преподаватель: 
-    Видео: https://vimeo.com/961710881
+    Видео: https://vimeo.com/961710881/35e00bd303
 
   [28.05.2024] Entwicklung von Chatbots
     Преподаватель: 
-    Видео: https://vimeo.com/951927971
+    Видео: https://vimeo.com/951927971/ca33216eb6
 
 ================================================================================
   AI TOOLS  (2 уроков)
 ================================================================================
   [18.12.2025] AI PH 2: Используем AI для работы с кодом
     Преподаватель: Saifullin Timur
-    Видео: https://vimeo.com/1147672448
+    Видео: https://vimeo.com/1147672448/33e0fac2b9
 
   [13.11.2025] AI PH 1: Используем AI в обучении
     Преподаватель: Andreev Vyacheslav
-    Видео: https://vimeo.com/1136486357
+    Видео: https://vimeo.com/1136486357/b4097811aa
+
+================================================================================
+  AUTO QA  (2 уроков)
+================================================================================
+  [17.04.2026] Auto QA 2: Summary session 1
+    Преподаватель: Surkov Roman
+    Видео: https://vimeo.com/1184108246/06750edaa4
+
+  [15.04.2026] Auto QA 1: Введение в автоматизированное тестирование
+    Преподаватель: Surkov Roman
+    Видео: https://vimeo.com/1183339545/331f26c12c
 
 ================================================================================
   CURATOR MEETING  (3 уроков)
 ================================================================================
   [26.02.2026] Встреча с куратором
     Преподаватель: Smirnova Elizaveta
-    Видео: https://vimeo.com/1168465270
+    Видео: https://vimeo.com/1168465270/a7401a7946
 
   [26.11.2025] Встреча с куратором
     Преподаватель: 
-    Видео: https://vimeo.com/1140771419
+    Видео: https://vimeo.com/1140771419/f56154f161
 
   [10.10.2025] Встреча с куратором
     Преподаватель: 
-    Видео: https://vimeo.com/1126122612
+    Видео: https://vimeo.com/1126122612/334c98dbf5
 
 ================================================================================
   DATABASES FOR DATA ANALYTICS  (61 уроков)
@@ -97,294 +108,321 @@
 
   [26.03.2026] Datebase 59: Практикум 20
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1177286872
+    Видео: https://vimeo.com/1177286872/def23b7fa6
 
   [25.03.2026] Database 58: Revision
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1176902696
+    Видео: https://vimeo.com/1176902696/3e407883f8
 
   [20.03.2026] Datebase 57: Summary session 19
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1175509529
+    Видео: https://vimeo.com/1175509529/bbd59fae3e
 
   [19.03.2026] Datebase 56: Практикум 19
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1175127818
+    Видео: https://vimeo.com/1175127818/d024076c9d
 
   [18.03.2026] Database 55: Практическая отработка Mongo DB
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1174748982
+    Видео: https://vimeo.com/1174748982/90da6ce2e6
 
   [13.03.2026] Datebase 54: Summary session 18
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1173259822
+    Видео: https://vimeo.com/1173259822/2eb753626b
 
   [12.03.2026] Datebase 53: Практикум 18
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1172894692
+    Видео: https://vimeo.com/1172894692/84fb9e0e3c
 
   [11.03.2026] Date base 52: Репликация и CAP теорема
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1172517375
+    Видео: https://vimeo.com/1172517375/aefc689c0c
 
   [06.03.2026] Datebase 51: Summary session 17
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1171005750
+    Видео: https://vimeo.com/1171005750/afd73d3200
 
   [05.03.2026] Datebase 50: Практикум 17
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1170646860
+    Видео: https://vimeo.com/1170646860/8d671ccb1a
 
   [04.03.2026] Datebase 49: MongoDB Atlas. Индексы. Наполнение коллекций
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1170285796
+    Видео: https://vimeo.com/1170285796/b684cef976
 
   [27.02.2026] Datebase 48: Summary session 16
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1168826868
+    Видео: https://vimeo.com/1168826868/7a6f466ac5
 
   [26.02.2026] Datebase 47: Практикум 16
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1168465490
+    Видео: https://vimeo.com/1168465490/f7efc8241e
 
   [25.02.2026] Database 46: MongoDB: Создание и наполнение коллекций. Агрегация
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1168085935
+    Видео: https://vimeo.com/1168085935/7374f05a21
 
   [20.02.2026] Datebase 45: Summary session 15
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1166647949
+    Видео: https://vimeo.com/1166647949/f461ebaae2
 
   [19.02.2026] Datebase 44: Практикум 15
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1166321882
+    Видео: https://vimeo.com/1166321882/064e7abd86
 
   [18.02.2026] Datebase 43: MongoDB Compass and mongosh. Формирование выборки
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1165970071
+    Видео: https://vimeo.com/1165970071/d3f22e022c
 
   [06.02.2026] Datebase 42: Summary session 14
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1162507802
+    Видео: https://vimeo.com/1162507802/24a503f621
 
   [05.02.2026] Datebase 41: Практикум 14
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1162143342
+    Видео: https://vimeo.com/1162143342/d345fa6d08
 
   [04.02.2026] Database 40: Знакомство с mongoDB
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1161786394
+    Видео: https://vimeo.com/1161786394/d2e63592c1
 
   [30.01.2026] Datebase 39: Summary session 13
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1160159944
+    Видео: https://vimeo.com/1160159944/0cb135d576
 
   [29.01.2026] Datebase 38: Практикум 13
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1159650287
+    Видео: https://vimeo.com/1159650287/663f419132
 
   [28.01.2026] Datebase 37: DBeaver. SQLite в Google Colab
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1159191803
+    Видео: https://vimeo.com/1159191803/74a819432a
 
   [23.01.2026] Datebase 36: Summary session 12
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1157542985
+    Видео: https://vimeo.com/1157542985/47d2b979d6
 
   [22.01.2026] Datebase 35: Практикум 12
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1157178704
+    Видео: https://vimeo.com/1157178704/75943b4eed
 
   [21.01.2026] Database 34: Хранимые процедуры. Параметры
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1156827415
+    Видео: https://vimeo.com/1156827415/2d7963a516
 
   [16.01.2026] Datebase 33: Summary session 11
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1154994749
+    Видео: https://vimeo.com/1154994749/984f74bd9a
 
   [15.01.2026] Datebase 32: Практикум 11
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1154636040
+    Видео: https://vimeo.com/1154636040/09a78e81f2
 
   [14.01.2026] Database 31: Оптимизация запросов. Индексация. Функции
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1154308931
+    Видео: https://vimeo.com/1154308931/a9261bc738
 
   [09.01.2026] Datebase 30: Summary session 10
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1152843917
+    Видео: https://vimeo.com/1152843917/d1f0b12283
 
   [08.01.2026] Datebase 29: Практикум 10
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1152525393
+    Видео: https://vimeo.com/1152525393/5a9c673926
 
   [07.01.2026] Date base 28: Оконные функции: функции ранжирования, смещения и выбора
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1152187488
+    Видео: https://vimeo.com/1152187488/6be9c00b4c
 
   [19.12.2025] Datebase 27: Summary session 9
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1148007759
+    Видео: https://vimeo.com/1148007759/39e31055ec
 
   [18.12.2025] Datebase 26: Практикум 9
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1147650286
+    Видео: https://vimeo.com/1147650286/f11a83af06
 
   [17.12.2025] Database 25: Оконные функции. Агрегирующие оконные функции
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1147312553
+    Видео: https://vimeo.com/1147312553/8c545b17b4
 
   [12.12.2025] Datebase 24: Summary session 8
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1145915653
+    Видео: https://vimeo.com/1145915653/dad7848680
 
   [11.12.2025] Datebase 23: Практикум 8
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1145593699
+    Видео: https://vimeo.com/1145593699/d6134a6636
 
   [10.12.2025] Datebase 22: Отработка основных операторов
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1145259468
+    Видео: https://vimeo.com/1145259468/4465ffe896
 
   [05.12.2025] Datebase 21: Summary session 7
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1143803826
+    Видео: https://vimeo.com/1143803826/0b17f4ddb2
 
   [04.12.2025] Datebase 20: Практикум 7
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1143405282
+    Видео: https://vimeo.com/1143405282/f56762e7d6
 
   [03.12.2025] Date base 19: Подзапросы. Табличные выражения
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1143060604
+    Видео: https://vimeo.com/1143060604/acaf6c39cb
 
   [28.11.2025] Datebase 18: Summary session 6
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1141403062
+    Видео: https://vimeo.com/1141403062/9372942620
 
   [27.11.2025] Datebase 17: Практикум 6
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1141100554
+    Видео: https://vimeo.com/1141100554/573bbb6569
 
   [26.11.2025] Datebase 16: Взаимосвязи между таблицами. ER диаграмма. JOIN и UNION
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1143112053
+    Видео: https://vimeo.com/1143112053/c0b4229abc
 
   [26.11.2025] Datebase 16: Взаимосвязи между таблицами. ER диаграмма. JOIN и UNION
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1143118681
+    Видео: https://vimeo.com/1143118681/aaed2a774a
 
   [21.11.2025] Datebase 15: Summary session 5
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1139272608
+    Видео: https://vimeo.com/1139272608/cffa7959fb
 
   [20.11.2025] Datebase 14: Практикум 5
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1138891408
+    Видео: https://vimeo.com/1138891408/9823f6927b
 
   [19.11.2025] Database 13: Агрегирующие функции. Оператор Group BY. Having
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1138526905
+    Видео: https://vimeo.com/1138526905/4af0d17df3
 
   [14.11.2025] Datebase 12: Summary session 4
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1136866102
+    Видео: https://vimeo.com/1136866102/445b13ef84
 
   [13.11.2025] Datebase 11: Практикум 4
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1136449381
+    Видео: https://vimeo.com/1136449381/9db7663efb
 
   [11.11.2025] Datebase 10: Создание и изменение таблиц. Представления View
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1135727151
+    Видео: https://vimeo.com/1135727151/983b2ca730
 
   [07.11.2025] Datebase 9: Summary session 3
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1134575204
+    Видео: https://vimeo.com/1134575204/589e7a6401
 
   [06.11.2025] Datebase 8: Практикум 3
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1134208543
+    Видео: https://vimeo.com/1134208543/eee7336b4f
 
   [05.11.2025] Datebase 7: Типы данных. Особенности работы с датой и временем
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1133806417
+    Видео: https://vimeo.com/1133806417/4ab3bdc64d
 
   [31.10.2025] Database 6: Summary session 2
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1132488567
+    Видео: https://vimeo.com/1132488567/572ce1d3f4
 
   [30.10.2025] Database 5: Практикум 2
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1132082269
+    Видео: https://vimeo.com/1132082269/9d683cb0a8
 
   [29.10.2025] Database 4: Условные конструкции. Ограничение выборки. Выбор уникальных значений
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1131658868
+    Видео: https://vimeo.com/1131658868/245585cc7b
 
   [24.10.2025] Datаbase 3: Summary session 1
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1130173948
+    Видео: https://vimeo.com/1130173948/0d9462e660
 
   [23.10.2025] Datаbase 2: Практикум 1
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1129808188
+    Видео: https://vimeo.com/1129808188/8e1c1c94c2
 
   [22.10.2025] Datаbase 1: Введение в базы данных. Первые запросы. Оператор WHERE. NULL
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1129483131
+    Видео: https://vimeo.com/1129483131/0e8d30b43d
 
 ================================================================================
-  GERMAN  (30 уроков)
+  DOCKER & CLOUD TECHOLOGIES  (1 уроков)
 ================================================================================
+  [13.04.2026] Docker 1: Основы Docker
+    Преподаватель: Andreev Vyacheslav
+    Видео: https://vimeo.com/1182612822/04095e0aab
+
+================================================================================
+  GERMAN  (35 уроков)
+================================================================================
+  [16.04.2026] German Speaking club: IT-Zentren vs. Andere Standorte in Deutschland: Sind Berlin, München und Hamburg die besten Orte für eine IT-Karriere?
+    Преподаватель: Levakhina Olga
+    Видео: https://vimeo.com/1183764810/a412768831
+
+  [14.04.2026] German: Техникум 11
+    Преподаватель: Joël Doat
+    Видео: https://vimeo.com/1182975697/3be4d41995
+
+  [14.04.2026] German: Техникум 11
+    Преподаватель: Joël Doat
+    Видео: https://vimeo.com/1183038996/97014338b1
+
+  [02.04.2026] German Speaking club: Work-Study-Life-Balance: Tipps und Tricks
+    Преподаватель: Ionova Alyona
+    Видео: https://vimeo.com/1179584482/eb287db818
+
+  [30.03.2026] German: Техникум 10
+    Преподаватель: Carstens Leonard
+    Видео: https://vimeo.com/1178484498/70e8fd6a45
+
   [26.03.2026] German Speaking club: Bürokratie
     Преподаватель: Ionova Alyona
-    Видео: https://vimeo.com/1177373233
+    Видео: https://vimeo.com/1177373233/a17469db60
 
   [24.03.2026] German: Техникум 9
     Преподаватель: Joël Doat
-    Видео: https://vimeo.com/1176614961
+    Видео: https://vimeo.com/1176614961/5aad39a77a
 
   [19.03.2026] German Speaking club: Technologie und Nachhaltigkeit
     Преподаватель: Ionova Alyona
-    Видео: https://vimeo.com/1175202861
+    Видео: https://vimeo.com/1175202861/bd51a8c91c
 
   [17.03.2026] German: Техникум 8
     Преподаватель: Joël Doat
-    Видео: https://vimeo.com/1174440631
+    Видео: https://vimeo.com/1174440631/a3b825e107
 
   [12.03.2026] German Speaking club: Künstliche Intelligenz
     Преподаватель: Chesheva Polina
-    Видео: https://vimeo.com/1172967878
+    Видео: https://vimeo.com/1172967878/0fcf48f2fe
 
   [05.03.2026] German Speaking club: Arbeitskultur
     Преподаватель: Chesheva Polina
-    Видео: https://vimeo.com/1170696636
+    Видео: https://vimeo.com/1170696636/623eb4afb3
 
   [03.03.2026] German: Техникум 7
     Преподаватель: Joël Doat
-    Видео: https://vimeo.com/1169953138
+    Видео: https://vimeo.com/1169953138/bf92835254
 
   [26.02.2026] German Speaking club: Integration und Sprache
     Преподаватель: Chesheva Polina
-    Видео: https://vimeo.com/1168521633
+    Видео: https://vimeo.com/1168521633/9bbf985401
 
   [24.02.2026] German: Техникум 6
     Преподаватель: Joël Doat
-    Видео: https://vimeo.com/1167777248
+    Видео: https://vimeo.com/1167777248/e8cca784b0
 
   [19.02.2026] German Speaking club: Workation: Wird das Konzept in Deutschland akzeptiert und welche Vorteile und Herausforderungen bringt es mit sich?
     Преподаватель: Chesheva Polina
-    Видео: https://vimeo.com/1166369083
+    Видео: https://vimeo.com/1166369083/912c0bc240
 
   [17.02.2026] German: Техникум 5
     Преподаватель: Joël Doat
-    Видео: https://vimeo.com/1165699394
+    Видео: https://vimeo.com/1165699394/b89123014c
 
   [12.02.2026] German Speaking club: Soziale Medien und Privatsphäre: Beeinflussen soziale Medien unsere Privatsphäre und Beziehungen?
     Преподаватель: Ionova Alyona
-    Видео: https://vimeo.com/1164386422
+    Видео: https://vimeo.com/1164386422/1e0de7bf9a
 
   [05.02.2026] German Speaking club:  Mobilität und Transportmittel in Deutschland: Sind öffentliche und umweltfreundliche Verkehrsmittel ausreichend entwickelt?
     Преподаватель: Ionova Alyona
@@ -392,200 +430,200 @@
 
   [03.02.2026] German: Техникум 4
     Преподаватель: Joël Doat
-    Видео: https://vimeo.com/1161490367
+    Видео: https://vimeo.com/1161490367/3c4bdb7398
 
   [29.01.2026] German Speaking club: Arbeitsrecht in Deutschland: Wie unterscheiden sich die Rechte der Arbeitnehmer in Deutschland im Vergleich zu anderen Ländern?
     Преподаватель: Ionova Alyona
-    Видео: https://vimeo.com/1159703802
+    Видео: https://vimeo.com/1159703802/558b7d59a2
 
   [27.01.2026] German: Техникум 3
     Преподаватель: Joël Doat
-    Видео: https://vimeo.com/1158833964
+    Видео: https://vimeo.com/1158833964/fc63887569
 
   [22.01.2026] German Speaking club: Reisen innerhalb Deutschlands und Europas: Wie unterscheiden sich die Reisegewohnheiten der Deutschen und anderer Nationalitäten?
     Преподаватель: Ionova Alyona
-    Видео: https://vimeo.com/1157236488
+    Видео: https://vimeo.com/1157236488/47b326d159
 
   [15.01.2026] German Speaking club: Stadt vs. Land: IT-Karrieren in ländlichen Regionen – Gibt es Unterschiede bei den Karrieremöglichkeiten zwischen städtischen und ländlichen Regionen?
     Преподаватель: Ionova Alyona
-    Видео: https://vimeo.com/1154704057
+    Видео: https://vimeo.com/1154704057/03c0d9f881
 
   [13.01.2026] German: Техникум 2
     Преподаватель: Joël Doat
-    Видео: https://vimeo.com/1154001582
+    Видео: https://vimeo.com/1154001582/cceb04144e
 
   [08.01.2026] German Speaking club: Kulturelle Unterschiede: Wie zeigen sich kulturelle Unterschiede zwischen Deutschland und anderen Ländern in der Arbeit und Kommunikation?
     Преподаватель: Ionova Alyona
-    Видео: https://vimeo.com/1152578777
+    Видео: https://vimeo.com/1152578777/1dae189ac8
 
   [07.01.2026] German: Техникум 1
     Преподаватель: Labudova Yulia
-    Видео: https://vimeo.com/1152261873
+    Видео: https://vimeo.com/1152261873/e41cb549ab
 
   [18.12.2025] German Speaking club: Freelancing vs. Festanstellung in der IT: Wie wählt man das optimale Modell?
     Преподаватель: Ionova Alyona
-    Видео: https://vimeo.com/1147731971
+    Видео: https://vimeo.com/1147731971/6bfdaedfc6
 
   [11.12.2025] German Speaking club: Zukunft der Bildung: Was bietet Online-Lernen, was der traditionelle Unterricht nicht kann?
     Преподаватель: Ionova Alyona
-    Видео: https://vimeo.com/1145652934
+    Видео: https://vimeo.com/1145652934/f0a810c2b5
 
   [04.12.2025] German Speaking club: Berufliche Netzwerke – Wie wichtig sind berufliche Netzwerke in Deutschland und wie kann man sie aufbauen?
     Преподаватель: Ionova Alyona
-    Видео: https://vimeo.com/1143468876
+    Видео: https://vimeo.com/1143468876/ad66b8b8ec
 
   [27.11.2025] German Speaking club: Die Auswirkungen der Technologie auf die psychische Gesundheit: Trägt die Technologie zur Verbesserung der psychischen Gesundheit bei oder schafft sie neue Herausforderungen?
     Преподаватель: Ionova Alyona
-    Видео: https://vimeo.com/1141163104
+    Видео: https://vimeo.com/1141163104/ff1c9bcebb
 
   [20.11.2025] German Speaking club: Ethik in der KI: Effektive Regulierung vs. Ineffektive Regulierung: Kann Ethik in der KI effektiv reguliert werden?
     Преподаватель: Ionova Alyona
-    Видео: https://vimeo.com/1138955293
+    Видео: https://vimeo.com/1138955293/c7126c5a79
 
   [13.11.2025] German Speaking club: Bewerbungsprozess: Welche Besonderheiten gibt es beim Bewerbungsprozess in Deutschland? Welche Tipps gibt es für einen erfolgreichen Einstieg in den deutschen Arbeitsmarkt?
     Преподаватель: Ionova Alyona
-    Видео: https://vimeo.com/1136511642
+    Видео: https://vimeo.com/1136511642/a85073085c
 
   [06.11.2025] German Speaking club: Bildungssystem – Welche Unterschiede gibt es zwischen dem deutschen Bildungssystem und dem in Ihrem Heimatland?
     Преподаватель: Ionova Alyona
-    Видео: https://vimeo.com/1134264215
+    Видео: https://vimeo.com/1134264215/156fa486f4
 
   [30.10.2025] German Speaking club: Datenschutzgesetze und biometrische Identifikation: Reichen aktuelle Regelungen aus, um Privatsphäre und Sicherheit gegen die wachsende Bequemlichkeit digitaler Tools zu schützen?
     Преподаватель: Ionova Alyona
-    Видео: https://vimeo.com/1132146313
+    Видео: https://vimeo.com/1132146313/353197337c
 
   [23.10.2025] German Speaking club: Deutsches Gesundheitssystem: Wie funktioniert das Gesundheitssystem in Deutschland und was sind seine Vor- und Nachteile?
     Преподаватель: Ionova Alyona
-    Видео: https://vimeo.com/1129901926
+    Видео: https://vimeo.com/1129901926/28b9eeb29b
 
 ================================================================================
   INTRODUCTION  (9 уроков)
 ================================================================================
   [17.10.2025] Компьютерная грамотность 4: Интернет и Google-диск
     Преподаватель: Andreev Vyacheslav
-    Видео: https://vimeo.com/1128199506
+    Видео: https://vimeo.com/1128199506/d778d384fc
 
   [17.10.2025] Введение 5: Подготовка к обучению (установка программ)
     Преподаватель: Andreev Vyacheslav
-    Видео: https://vimeo.com/1128172779
+    Видео: https://vimeo.com/1128172779/7bda4b7c63
 
   [16.10.2025] Компьютерная грамотность 3: Работа с папками и файлами
     Преподаватель: Andreev Vyacheslav
-    Видео: https://vimeo.com/1127865435
+    Видео: https://vimeo.com/1127865435/918551f0de
 
   [16.10.2025] Введение 4: Продвинутая математика
     Преподаватель: Andreev Vyacheslav
-    Видео: https://vimeo.com/1127856682
+    Видео: https://vimeo.com/1127856682/0b22689b4a
 
   [15.10.2025] Компьютерная грамотность 2: Монитор и клавиатура
     Преподаватель: Barbylev Ilya
-    Видео: https://vimeo.com/1127503080
+    Видео: https://vimeo.com/1127503080/7abc4f0e14
 
   [15.10.2025] Введение 3: Интернет и безопасность данных (GDPR)
     Преподаватель: Andreev Vyacheslav
-    Видео: https://vimeo.com/1127484053
+    Видео: https://vimeo.com/1127484053/4ecdb04106
 
   [14.10.2025] Компьютерная грамотность 1: Компьютеры и девайсы
     Преподаватель: Andreev Vyacheslav
-    Видео: https://vimeo.com/1127165732
+    Видео: https://vimeo.com/1127165732/0d5f7c0218
 
   [14.10.2025] Введение 2: Базовая математика
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1127136864
+    Видео: https://vimeo.com/1127136864/51e6a33cbc
 
   [13.10.2025] Введение 1: Кто такой python разработчик и какие задачи он решает
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1126795881
+    Видео: https://vimeo.com/1126795881/3afb3e8d2f
 
 ================================================================================
   JOB SEARCH  (3 уроков)
 ================================================================================
   [12.03.2026] Job search 5: Практическое занятие: собеседование с HR
     Преподаватель: Sypchenko Oksana
-    Видео: https://vimeo.com/1172922051
+    Видео: https://vimeo.com/1172922051/27b2cd8d7e
 
   [04.12.2025] Job Search 2: Практическое занятие: разбор резюме и Cover letter
     Преподаватель: Sypchenko Oksana
-    Видео: https://vimeo.com/1143435988
+    Видео: https://vimeo.com/1143435988/bb99250a93
 
   [03.12.2025] Встреча-знакомство с курсом Job Search
     Преподаватель: Savina Nailia
-    Видео: https://vimeo.com/1143055600
+    Видео: https://vimeo.com/1143055600/e2af0addc4
 
 ================================================================================
   LINUX  (33 уроков)
 ================================================================================
   [03.02.2026] Linux & Git 31: Linux: Mini project
     Преподаватель: Andreev Vyacheslav
-    Видео: https://vimeo.com/1161413621
+    Видео: https://vimeo.com/1161413621/3bbceec5c1
 
   [27.01.2026] Linux & Git 30: Командная работа в Git
     Преподаватель: Andreev Vyacheslav
-    Видео: https://vimeo.com/1158771285
+    Видео: https://vimeo.com/1158771285/065d4a0901
 
   [23.01.2026] Linux & Git 29: Summary Session 11
     Преподаватель: Andreev Vyacheslav
-    Видео: https://vimeo.com/1157572030
+    Видео: https://vimeo.com/1157572030/73d22779c7
 
   [20.01.2026] Linux & Git 28: Git: Merge конфликты, monorepo
     Преподаватель: Andreev Vyacheslav
-    Видео: https://vimeo.com/1156454338
+    Видео: https://vimeo.com/1156454338/5ce96fe90a
 
   [16.01.2026] Linux & Git 27: Завершение работы со скриптами
     Преподаватель: Andreev Vyacheslav
-    Видео: https://vimeo.com/1155028154
+    Видео: https://vimeo.com/1155028154/5ede8d35b4
 
   [13.01.2026] Linux & Git 26: Summary Session 10
     Преподаватель: Andreev Vyacheslav
-    Видео: https://vimeo.com/1153926429
+    Видео: https://vimeo.com/1153926429/73b1980db8
 
   [13.01.2026] Linux & Git 25: PR в Pycharm ч2
     Преподаватель: Andreev Vyacheslav
-    Видео: https://vimeo.com/1153896500
+    Видео: https://vimeo.com/1153896500/ca22b1c40d
 
   [09.01.2026] Linux & Git 25: PR в Pycharm ч1
     Преподаватель: Andreev Vyacheslav
-    Видео: https://vimeo.com/1152879889
+    Видео: https://vimeo.com/1152879889/250b42b5c0
 
   [07.01.2026] Linux & Git 24: Продолжение работы со скриптами
     Преподаватель: Andreev Vyacheslav
-    Видео: https://vimeo.com/1152217383
+    Видео: https://vimeo.com/1152217383/b33f097b3e
 
   [19.12.2025] Linux & Git 23: Summary Session 9
     Преподаватель: Andreev Vyacheslav
-    Видео: https://vimeo.com/1148039073
+    Видео: https://vimeo.com/1148039073/deec1ccb36
 
   [16.12.2025] Linux & Git 22: Git fork в контексте PR
     Преподаватель: Andreev Vyacheslav
-    Видео: https://vimeo.com/1146910414
+    Видео: https://vimeo.com/1146910414/ebcef3da8e
 
   [12.12.2025] Linux & Git 21: cron, crontab + tar
     Преподаватель: Andreev Vyacheslav
-    Видео: https://vimeo.com/1145947736
+    Видео: https://vimeo.com/1145947736/a2048aee9e
 
   [09.12.2025] Linux & Git 20: Summary Session 8
     Преподаватель: Andreev Vyacheslav
-    Видео: https://vimeo.com/1144839694
+    Видео: https://vimeo.com/1144839694/ea004047c0
 
   [09.12.2025] Linux & Git 19: Merge и rebase ч2
     Преподаватель: Andreev Vyacheslav
-    Видео: https://vimeo.com/1144813286
+    Видео: https://vimeo.com/1144813286/f906dfcc71
 
   [05.12.2025] Linux & Git 19: Merge и rebase ч1
     Преподаватель: Andreev Vyacheslav
-    Видео: https://vimeo.com/1143835596
+    Видео: https://vimeo.com/1143835596/cef171ea0a
 
   [01.12.2025] Linux & Git 18: Работа со скриптами
     Преподаватель: Andreev Vyacheslav
-    Видео: https://vimeo.com/1142016352
+    Видео: https://vimeo.com/1142016352/56d2273516
 
   [28.11.2025] Linux & Git 17: Summary Session 7
     Преподаватель: Andreev Vyacheslav
-    Видео: https://vimeo.com/1141431886
+    Видео: https://vimeo.com/1141431886/36c3e24a03
 
   [24.11.2025] Linux & Git 16: Ветви в Git
     Преподаватель: Andreev Vyacheslav
-    Видео: https://vimeo.com/1140026784
+    Видео: https://vimeo.com/1140026784/071da9bb9e
 
   [21.11.2025] Linux & Git 15: find, locate, bash scripts -  loops and cycles
     Преподаватель: Andreev Vyacheslav
@@ -593,11 +631,11 @@
 
   [18.11.2025] Linux & Git 14: Summary Session 6
     Преподаватель: Andreev Vyacheslav
-    Видео: https://vimeo.com/1138093649
+    Видео: https://vimeo.com/1138093649/77a68d5fc2
 
   [17.11.2025] Linux & Git 13: Git introduction
     Преподаватель: Andreev Vyacheslav
-    Видео: https://vimeo.com/1137681522
+    Видео: https://vimeo.com/1137681522/58dc0dd3cd
 
   [14.11.2025] Linux & Git 12:  file permissions, first bash script
     Преподаватель: Andreev Vyacheslav
@@ -605,7 +643,7 @@
 
   [11.11.2025] Linux & Git 11: Summary Session 5
     Преподаватель: Andreev Vyacheslav
-    Видео: https://vimeo.com/1135739688
+    Видео: https://vimeo.com/1135739688/1badd542ad
 
   [10.11.2025] Linux & Git 10:  Переменные. Системные переменные
     Преподаватель: Andreev Vyacheslav
@@ -613,7 +651,7 @@
 
   [07.11.2025] Linux & Git 9: Summary Session 4
     Преподаватель: Andreev Vyacheslav
-    Видео: https://vimeo.com/1134606048
+    Видео: https://vimeo.com/1134606048/976fdc0bea
 
   [04.11.2025] Linux & Git 8:  SSH - secured shell
     Преподаватель: Andreev Vyacheslav
@@ -621,11 +659,11 @@
 
   [03.11.2025] Linux & Git 7: Summary Session 3
     Преподаватель: Andreev Vyacheslav
-    Видео: https://vimeo.com/1133101269
+    Видео: https://vimeo.com/1133101269/ffd7c95561
 
   [31.10.2025] Linux & Git 6: Текстовые редакторы на примере vi и nano
     Преподаватель: Andreev Vyacheslav
-    Видео: https://vimeo.com/1132509063
+    Видео: https://vimeo.com/1132509063/7a81b0c742
 
   [28.10.2025] Linux & Git 5:  Summary Session 2
     Преподаватель: Andreev Vyacheslav
@@ -645,181 +683,220 @@
 
   [20.10.2025] Linux & Git 1: Введение в Linux
     Преподаватель: Habalkin Konstantin
-    Видео: https://vimeo.com/1128822475
+    Видео: https://vimeo.com/1128822475/9a51e38769
 
 ================================================================================
-  MANUAL QA  (11 уроков)
+  MANUAL QA  (12 уроков)
 ================================================================================
+  [31.03.2026] QA & Testing 12: Summary session 6
+    Преподаватель: Surkov Roman
+    Видео: https://vimeo.com/1178761891/88c449e13d
+
   [27.03.2026] QA & Testing 11: Summary session 5
     Преподаватель: Surkov Roman
     Видео: https://vimeo.com/1177707919/f6e33e3541
 
   [24.03.2026] QA & Testing 10: Нагрузочное тестирование
     Преподаватель: Surkov Roman
-    Видео: https://vimeo.com/1176550641
+    Видео: https://vimeo.com/1176550641/3fd913d21d
 
   [20.03.2026] QA & Testing 9: Summary session 4
     Преподаватель: Surkov Roman
-    Видео: https://vimeo.com/1175428572
+    Видео: https://vimeo.com/1175428572/eb758a05d7
 
   [17.03.2026] QA & Testing 8: Тестирование API
     Преподаватель: Surkov Roman
-    Видео: https://vimeo.com/1174374460
+    Видео: https://vimeo.com/1174374460/bce649b91f
 
   [13.03.2026] QA & Testing 7: Summary session 3
     Преподаватель: Surkov Roman
-    Видео: https://vimeo.com/1173295922
+    Видео: https://vimeo.com/1173295922/a4f79a5e92
 
   [10.03.2026] QA & Testing 6: Техники тест-дизайна
     Преподаватель: Surkov Roman
-    Видео: https://vimeo.com/1172127823
+    Видео: https://vimeo.com/1172127823/32c69b3267
 
   [06.03.2026] QA & Testing 5: Summary session 2
     Преподаватель: Surkov Roman
-    Видео: https://vimeo.com/1171029965
+    Видео: https://vimeo.com/1171029965/eb94935d6b
 
   [03.03.2026] QA & Testing 4: Баг-репорты
     Преподаватель: Surkov Roman
-    Видео: https://vimeo.com/1169887534
+    Видео: https://vimeo.com/1169887534/d304638247
 
   [27.02.2026] QA & Testing 3: Summary session 1
     Преподаватель: Surkov Roman
-    Видео: https://vimeo.com/1168858930
+    Видео: https://vimeo.com/1168858930/94ba5b5acd
 
   [24.02.2026] QA & Testing 2: Тестовые артефакты
     Преподаватель: Surkov Roman
-    Видео: https://vimeo.com/1167701075
+    Видео: https://vimeo.com/1167701075/0a24157f2a
 
   [17.02.2026] QA & Testing 1: Введение в тестирование
     Преподаватель: Surkov Roman
-    Видео: https://vimeo.com/1165640488
+    Видео: https://vimeo.com/1165640488/b108059da4
 
 ================================================================================
-  PYTHON FUNDAMENTALS  (91 уроков)
+  PYTHON ADVANCED  (4 уроков)
 ================================================================================
+  [17.04.2026] Python Adv 4: Flask: Summary session 1
+    Преподаватель: Samodurov Danil
+    Видео: https://vimeo.com/1184039270/eb6a509efa
+
+  [16.04.2026] Python Adv 3: Flask: Библиотека Pydantic
+    Преподаватель: Samodurov Danil
+    Видео: https://vimeo.com/1183727181/6b21dfc839
+
+  [15.04.2026] Python Adv 2: Flask: Практикум 1
+    Преподаватель: Samodurov Danil
+    Видео: https://vimeo.com/1183304804/7244d61752
+
+  [14.04.2026] Python Adv 1: Flask: Введение в веб-разработку и первое Flask приложение
+    Преподаватель: Samodurov Danil
+    Видео: https://vimeo.com/1182991037/59bf332282
+
+================================================================================
+  PYTHON FUNDAMENTALS  (95 уроков)
+================================================================================
+  [02.04.2026] Python 94: Презентация проекта Python"
+    Преподаватель: Kletsovka Tatiana
+    Видео: https://vimeo.com/1179515840/82acd841e7
+
+  [01.04.2026] Python 93: Консультация по проекту
+    Преподаватель: Kletsovka Tatiana
+    Видео: https://vimeo.com/1179153211/7200eda4ba
+
+  [31.03.2026] Python 92: Консультация по проекту
+    Преподаватель: Kletsovka Tatiana
+    Видео: https://vimeo.com/1178814373/db8bc12689
+
+  [30.03.2026] Python 91: Консультация по проекту
+    Преподаватель: Kletsovka Tatiana
+    Видео: https://vimeo.com/1178391936/a1644791dd
+
   [27.03.2026] Python 90: Консультация по проекту
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1177634810
+    Видео: https://vimeo.com/1177634810/f08a6fb6de
 
   [26.03.2026] Python 89: Консультация по проекту
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1177259390
+    Видео: https://vimeo.com/1177259390/a61da2b1b4
 
   [23.03.2026] Python 87: Summary session 22
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1176145686
+    Видео: https://vimeo.com/1176145686/7af32ddf7e
 
   [23.03.2026] * Python 88: Онбординг в проект Python
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1176177613
+    Видео: https://vimeo.com/1176177613/1180ddbfd3
 
   [20.03.2026] Python 86: Практикум 22
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1175466261
+    Видео: https://vimeo.com/1175466261/b66c0e1ccd
 
   [19.03.2026] Python 85: Практикум 21
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1175169015
+    Видео: https://vimeo.com/1175169015/6d0fe218b8
 
   [19.03.2026] Python 84: MongoDB и Python. Модули
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1175094362
+    Видео: https://vimeo.com/1175094362/59f2c976fa
 
   [17.03.2026] Python 83: Summary session 21
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1174410950
+    Видео: https://vimeo.com/1174410950/a31d57dc10
 
   [16.03.2026] Python 82: MySQL. Транзакции
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1174020727
+    Видео: https://vimeo.com/1174020727/4568bd94aa
 
   [16.03.2026] Python 81: Практикум 20
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1173992175
+    Видео: https://vimeo.com/1173992175/6514d76094
 
   [16.03.2026] Python 80: MySQL и Python
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1173948278
+    Видео: https://vimeo.com/1173948278/4f1f83bc41
 
   [13.03.2026] Python 79: Summary session 20
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1173228639
+    Видео: https://vimeo.com/1173228639/f02f851649
 
   [12.03.2026] Python 78: Магические методы
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1172866769
+    Видео: https://vimeo.com/1172866769/7fd97b92ca
 
   [10.03.2026] Python 77: Практикум 19
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1172163597
+    Видео: https://vimeo.com/1172163597/b38509a925
 
   [09.03.2026] Python 76: Абстрактные классы и пользовательские исключения
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1171772008
+    Видео: https://vimeo.com/1171772008/570c0e6fa8
 
   [09.03.2026] Python 75: Summary session 19
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1171734432
+    Видео: https://vimeo.com/1171734432/372a35de32
 
   [09.03.2026] Python 74: Инкапсуляция
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1171708015
+    Видео: https://vimeo.com/1171708015/91c563d62f
 
   [06.03.2026] Python 73: Практикум 18
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1170979936
+    Видео: https://vimeo.com/1170979936/a1fc3de4d0
 
   [05.03.2026] Python 72: Множественное наследование
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1170614924
+    Видео: https://vimeo.com/1170614924/03c61b29f3
 
   [03.03.2026] Python 71: Summary session 18
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1169922219
+    Видео: https://vimeo.com/1169922219/5a998c6282
 
   [02.03.2026] Python 70: Наследование и полиморфизм
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1169553941
+    Видео: https://vimeo.com/1169553941/003d242b71
 
   [02.03.2026] Python 69: Практикум 17
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1169526588
+    Видео: https://vimeo.com/1169526588/4760574871
 
   [02.03.2026] Python 68: Атрибуты объекта и класса
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1169503093
+    Видео: https://vimeo.com/1169503093/15f6b801a7
 
   [27.02.2026] Python 67: Summary session 17
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1168800044
+    Видео: https://vimeo.com/1168800044/a56150e53b
 
   [26.02.2026] Python 66: Основы ООП
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1168428244
+    Видео: https://vimeo.com/1168428244/2be42c7e0e
 
   [24.02.2026] Python 65: Практикум 16
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1167742828
+    Видео: https://vimeo.com/1167742828/5318aba3cb
 
   [23.02.2026] Python 64: Декораторы
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1167367022
+    Видео: https://vimeo.com/1167367022/eb448029e0
 
   [23.02.2026] Python 63: Summary session 16
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1167321425
+    Видео: https://vimeo.com/1167321425/5f8708c2eb
 
   [23.02.2026] Python 62: Вложенные функции. Замыкание
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1167277082
+    Видео: https://vimeo.com/1167277082/17737eefe8
 
   [23.02.2026] Python 62: Вложенные функции. Замыкание
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1167298367
+    Видео: https://vimeo.com/1167298367/0c254a9e79
 
   [20.02.2026] Python 61: Практикум 15
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1166624389
+    Видео: https://vimeo.com/1166624389/0cb739d399
 
   [19.02.2026] Python 60:  Регулярные выражения
     Преподаватель: Kletsovka Tatiana
@@ -827,236 +904,236 @@
 
   [17.02.2026] Python 59: Summary session 15
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1165660169
+    Видео: https://vimeo.com/1165660169/44cd22c5d7
 
   [16.02.2026] Python 58: Файлы JSON и модуль datetime
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1165352838
+    Видео: https://vimeo.com/1165352838/ce5afc8cc7
 
   [16.02.2026] Python 57: Практика 14
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1165328250
+    Видео: https://vimeo.com/1165328250/0ccb3c2c3b
 
   [16.02.2026] Python 56: Генераторы
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1165305339
+    Видео: https://vimeo.com/1165305339/d421bd5d22
 
   [06.02.2026] Python 55: Summary session 14
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1162481420
+    Видео: https://vimeo.com/1162481420/1684635c51
 
   [05.02.2026] Python 54: Итераторы и генераторные выражения
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1162115743
+    Видео: https://vimeo.com/1162115743/9e201ed7f4
 
   [02.02.2026] Python 53: Практикум 13
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1161036376
+    Видео: https://vimeo.com/1161036376/73d832f02b
 
   [02.02.2026] Python 52: Основы работы с файлами
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1160996312
+    Видео: https://vimeo.com/1160996312/be2d9bd167
 
   [30.01.2026] Python 51: Summary session 13
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1160140697
+    Видео: https://vimeo.com/1160140697/cf0bb5ad57
 
   [29.01.2026] Python 50: Работа с файловой системой.
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1159600854
+    Видео: https://vimeo.com/1159600854/35a0d1aaa5
 
   [26.01.2026] Python 49: Практикум 12
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1158366775
+    Видео: https://vimeo.com/1158366775/9d1233e290
 
   [26.01.2026] Python 48: Исключения: обработка ошибок
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1158345191
+    Видео: https://vimeo.com/1158345191/95fb269e86
 
   [23.01.2026] Python 47: Summary session 12
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1157521136
+    Видео: https://vimeo.com/1157521136/11b321ab05
 
   [22.01.2026] Python 46: Рекурсия
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1157144598
+    Видео: https://vimeo.com/1157144598/3fcfb9d293
 
   [19.01.2026] Python 45: Практикум 11
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1156011360
+    Видео: https://vimeo.com/1156011360/fd0ec7f2c5
 
   [19.01.2026] Python 44: Документация. Аннотации типов
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1155954397
+    Видео: https://vimeo.com/1155954397/f92ccaafad
 
   [16.01.2026] Python 43: Summary session 11
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1154970164
+    Видео: https://vimeo.com/1154970164/a09d30ce76
 
   [15.01.2026] Python 42: Lambda-функции. Функции высшего порядка
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1154601411
+    Видео: https://vimeo.com/1154601411/9e53028f96
 
   [12.01.2026] Python 41: Практикум 10
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1153549656
+    Видео: https://vimeo.com/1153549656/6bbbf7b41c
 
   [12.01.2026] Python 40: Модуль collections
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1153520692
+    Видео: https://vimeo.com/1153520692/01e3761807
 
   [09.01.2026] Python 39: Summary session 10
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1152816161
+    Видео: https://vimeo.com/1152816161/3a2cc0def4
 
   [08.01.2026] Python 38: Функции. Области видимости
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1154392616
+    Видео: https://vimeo.com/1154392616/01833db98a
 
   [05.01.2026] Python 37: Практикум 9
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1151554354
+    Видео: https://vimeo.com/1151554354/8125f81003
 
   [05.01.2026] Python 36: Словари. Продолжение
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1151529388
+    Видео: https://vimeo.com/1151529388/a49247a6c6
 
   [19.12.2025] Python 35: Summary session 9
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1147975630
+    Видео: https://vimeo.com/1147975630/e7611a146a
 
   [18.12.2025] Python 34: Словари, frozenset
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1147618192
+    Видео: https://vimeo.com/1147618192/f4f3c716b7
 
   [15.12.2025] Python 33: Практикум 8
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1146543957
+    Видео: https://vimeo.com/1146543957/f489a7e2c8
 
   [15.12.2025] Python 32: Множества
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1146519584
+    Видео: https://vimeo.com/1146519584/867c95e340
 
   [12.12.2025] Python 31: Summary session 8
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1145891032
+    Видео: https://vimeo.com/1145891032/aadb602f11
 
   [11.12.2025] Python 30: List comprehension. Стек и очередь
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1145563788
+    Видео: https://vimeo.com/1145563788/6ef7c29bec
 
   [08.12.2025] Python 29: Практикум 7
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1144478127
+    Видео: https://vimeo.com/1144478127/3030c92665
 
   [08.12.2025] Python 28: Списки. Работа с памятью
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1144455234
+    Видео: https://vimeo.com/1144455234/d9270e9460
 
   [05.12.2025] Python 27: Summary session 7
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1143762812
+    Видео: https://vimeo.com/1143762812/6a8553568a
 
   [04.12.2025] Python 26: Методы списков
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1143375730
+    Видео: https://vimeo.com/1143375730/892494e5ac
 
   [02.12.2025] Python 25: Практикум 6
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1142402577
+    Видео: https://vimeo.com/1142402577/357edc6bdd
 
   [02.12.2025] Python 24: Кортежи
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1142369126
+    Видео: https://vimeo.com/1142369126/2b987c4eb4
 
   [28.11.2025] Python 23: Summary session 6
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1141374426
+    Видео: https://vimeo.com/1141374426/b9c5a42982
 
   [27.11.2025] Python 22: Строки: форматирование
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1141067506
+    Видео: https://vimeo.com/1141067506/741223517b
 
   [25.11.2025] Python 21: Практикум 5
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1140390109
+    Видео: https://vimeo.com/1140390109/6523fdfa02
 
   [25.11.2025] Python 20: Методы строк
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1140355558
+    Видео: https://vimeo.com/1140355558/7bc325f1e4
 
   [21.11.2025] Python 19: Summary session 5
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1139242650
+    Видео: https://vimeo.com/1139242650/a18669b6da
 
   [20.11.2025] Python 18: Знакомство с коллекциями: списки
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1138861515
+    Видео: https://vimeo.com/1138861515/83e60d72f0
 
   [18.11.2025] Python 17: Практикум 4
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1138069383
+    Видео: https://vimeo.com/1138069383/840e96abae
 
   [17.11.2025] Python 16: Цикл for
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1137680492
+    Видео: https://vimeo.com/1137680492/27ca3c3718
 
   [14.11.2025] Python 15: Summary session 4
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1136829843
+    Видео: https://vimeo.com/1136829843/a3d01610a3
 
   [13.11.2025] Python 14: Знакомство со строками
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1136419455
+    Видео: https://vimeo.com/1136419455/429e38cd31
 
   [12.11.2025] Python 13: Практикум 3
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1136039469
+    Видео: https://vimeo.com/1136039469/26984c9fe3
 
   [10.11.2025] Python 12: Цикл while
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1135278283
+    Видео: https://vimeo.com/1135278283/2865b413b0
 
   [07.11.2025] Python 11: Summary session 3
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1134553012
+    Видео: https://vimeo.com/1134553012/8643f9f9d4
 
   [06.11.2025] Python 10: Математические функции, хранение чисел. Модули
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1134170709
+    Видео: https://vimeo.com/1134170709/b466508065
 
   [04.11.2025] Python 9: Практикум 2
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1133458809
+    Видео: https://vimeo.com/1133458809/7f23635625
 
   [03.11.2025] Python 8: Операторы ветвления
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1133067390
+    Видео: https://vimeo.com/1133067390/539677b6b3
 
   [31.10.2025] Python 7: Summary session 2
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1132456465
+    Видео: https://vimeo.com/1132456465/31b1f816ff
 
   [30.10.2025] Python 6: Логический тип данных и сравнения
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1132041879
+    Видео: https://vimeo.com/1132041879/f14a48ecd7
 
   [28.10.2025] Python 5: Практикум 1
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1131283794
+    Видео: https://vimeo.com/1131283794/e3358cf772
 
   [27.10.2025] Python 4: Арифметические операторы, выражения
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1130846469
+    Видео: https://vimeo.com/1130846469/0390a971f3
 
   [24.10.2025] Python 3: Summary session 1
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1130149952
+    Видео: https://vimeo.com/1130149952/da559db4ab
 
   [21.10.2025] Python 2: Базовые типы данных, работа с функциями
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1129121408
+    Видео: https://vimeo.com/1129121408/2cadd5d354
 
   [20.10.2025] Python 1: Основы работы с Python
     Преподаватель: Kletsovka Tatiana
-    Видео: https://vimeo.com/1129019202
+    Видео: https://vimeo.com/1129019202/1b4ada86d0
