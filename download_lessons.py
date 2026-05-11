@@ -200,12 +200,51 @@ def _build_attempts(base_opts: dict) -> list[dict]:
     return attempts
 
 
+def _mirror_to(src: Path, extra_dirs: list[Path]) -> None:
+    """Скопировать src в каждую папку из extra_dirs (если там ещё нет).
+
+    Ошибки копирования логируем, но не падаем — основная скачка важнее.
+    """
+    if not extra_dirs:
+        return
+    for ed in extra_dirs:
+        try:
+            ed.mkdir(parents=True, exist_ok=True)
+            dst = ed / src.name
+            if dst.exists() and dst.stat().st_size == src.stat().st_size:
+                continue
+            if dst.exists():
+                # Размер отличается — не перезаписываем, чтобы не сломать существующее
+                print(f"  Зеркало   : пропущено (есть файл другого размера) {dst}")
+                continue
+            shutil.copy2(src, dst)
+            print(f"  Зеркало   : скопировано в {ed}")
+        except Exception as exc:
+            print(f"  Зеркало   : ошибка для {ed}: {exc}")
+
+
+def _find_downloaded_file(output_dir: Path, filename_stem: str | None) -> Path | None:
+    if not filename_stem:
+        return None
+    try:
+        from yt_dlp.utils import sanitize_filename as _ytdlp_sanitize
+        ytdlp_stem = _ytdlp_sanitize(filename_stem, restricted=False)
+    except Exception:
+        ytdlp_stem = filename_stem
+    for ext in (".mp4", ".mkv", ".webm", ".m4v", ".mov"):
+        candidate = output_dir / f"{ytdlp_stem}{ext}"
+        if candidate.exists():
+            return candidate
+    return None
+
+
 def download(
     url: str,
     quality: int,
     output_dir: Path,
     fast: bool = False,
     lesson_title: str | None = None,
+    extra_output_dirs: list[Path] | None = None,
 ) -> bool:
     """Скачать видео по URL.
 
@@ -213,15 +252,25 @@ def download(
     fast=False — скачать раздельные видео+аудио и смёрджить через ffmpeg (лучшее качество).
     lesson_title — если задан, используется как имя файла (вместо названия из Vimeo).
         Защищает от коллизий, когда у нескольких видео одинаковый заголовок на Vimeo.
+    extra_output_dirs — список папок-зеркал. Файл копируется в каждую сразу после
+        успешной скачки. Имя файла внутри папок совпадает с основной output_dir.
 
     Возвращает True если видео скачано, False если пропущено (уже было скачано ранее).
     """
     output_dir.mkdir(parents=True, exist_ok=True)
+    filename_stem = _sanitize_filename(lesson_title) if lesson_title else None
+    extras: list[Path] = list(extra_output_dirs or [])
+    # Не зеркалим в саму output_dir, если она же оказалась в списке
+    extras = [p for p in extras if Path(p).resolve() != Path(output_dir).resolve()]
 
     # Проверяем архив локально — без единого запроса к Vimeo
     if _already_downloaded(url):
         print(f"\n  Пропущено : {url}")
         print("              уже скачан ранее (запись в .downloaded)\n")
+        # Даже если уже скачано — досинхронизируем в зеркала, если там нет файла
+        existing = _find_downloaded_file(output_dir, filename_stem)
+        if existing is not None:
+            _mirror_to(existing, extras)
         return False
 
     ffmpeg_path = _find_ffmpeg()
@@ -231,7 +280,6 @@ def download(
         print("\n  Внимание  : ffmpeg не найден, используем режим без склейки потоков")
         print("              Для максимального качества установите ffmpeg\n")
 
-    filename_stem = _sanitize_filename(lesson_title) if lesson_title else None
     base_opts = _base_ydl_opts(
         quality, output_dir, fast, has_ffmpeg, ffmpeg_path, filename_stem=filename_stem
     )
@@ -264,12 +312,17 @@ def download(
                         print(f"\n  Заголовок : {title}")
                         print(f"  Качество  : до {quality}p")
                         print(f"  Папка     : {output_dir}")
+                        if extras:
+                            print(f"  Зеркала   : {', '.join(str(p) for p in extras)}")
                         print(f"  Источник  : {candidate}")
                         print(f"  Referer   : {referer}")
                         print(f"  Режим     : {mode}\n")
                         # Ensure quiet=False for the actual download so progress shows
                         ydl.params["quiet"] = False
                         ydl.download([candidate])
+                        produced = _find_downloaded_file(output_dir, filename_stem)
+                        if produced is not None:
+                            _mirror_to(produced, extras)
                         return True
                 except Exception as exc:
                     last_error = exc

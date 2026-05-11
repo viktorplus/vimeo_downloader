@@ -35,3 +35,21 @@ def get_bool(env: dict[str, str], key: str, default: bool) -> bool:
     if not val:
         return default
     return val in ("1", "true", "yes", "on")
+
+
+def get_paths(env: dict[str, str], key: str, fallback: list = None) -> list:
+    """Список путей из переменной с разделителем ';'.
+
+    Пустые элементы и пробелы убираются. Возвращает [] если ключа нет и
+    fallback не задан.
+    """
+    from pathlib import Path
+    raw = env.get(key, "")
+    if not raw:
+        return list(fallback or [])
+    out: list = []
+    for item in raw.split(";"):
+        item = item.strip().strip('"').strip("'")
+        if item:
+            out.append(Path(item))
+    return out or list(fallback or [])

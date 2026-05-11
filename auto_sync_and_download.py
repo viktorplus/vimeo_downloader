@@ -14,11 +14,10 @@ sys.path.insert(0, str(ROOT))
 
 import update_lessons_list as u  # noqa: E402
 import lessons_menu as m  # noqa: E402
-from config import load_env, get_int, get_bool  # noqa: E402
+from config import load_env, get_int, get_bool, get_paths  # noqa: E402
 from download_lessons import download  # noqa: E402
 
 LESSONS_FILE = ROOT / "lessons_list.txt"
-VIDEOS_DIR = ROOT / "videos"
 ARCHIVE_FILE = ROOT / ".downloaded"
 
 
@@ -39,6 +38,9 @@ def main() -> int:
     password = env.get("LMS_PASSWORD", "")
     quality = get_int(env, "QUALITY", 1080)
     fast = get_bool(env, "FAST", False)
+    videos_dirs = get_paths(env, "VIDEOS_DIRS", fallback=[ROOT / "videos"])
+    primary_dir = videos_dirs[0]
+    mirror_roots = videos_dirs[1:]
 
     if not login or not password:
         print("ОШИБКА: в .env должны быть указаны LMS_LOGIN и LMS_PASSWORD")
@@ -48,9 +50,12 @@ def main() -> int:
     print("=" * 70)
     print("ШАГ 1/2: обновление списка уроков из LMS")
     print("=" * 70)
-    print(f"Логин   : {login}")
-    print(f"Качество: до {quality}p")
-    print(f"Режим   : {'быстро (без склейки)' if fast else 'максимум (видео+аудио через ffmpeg)'}")
+    print(f"Логин    : {login}")
+    print(f"Качество : до {quality}p")
+    print(f"Режим    : {'быстро (без склейки)' if fast else 'максимум (видео+аудио через ffmpeg)'}")
+    print(f"Основная : {primary_dir}")
+    if mirror_roots:
+        print(f"Зеркала  : {'; '.join(str(p) for p in mirror_roots)}")
     print()
 
     sync_stats = u.update_lessons_file(
@@ -88,7 +93,8 @@ def main() -> int:
 
     for idx, lesson in enumerate(new_lessons, start=1):
         subj = m.sanitize_folder_name(lesson.get("subject", ""))
-        out_dir = VIDEOS_DIR / subj
+        out_dir = primary_dir / subj
+        mirror_dirs = [root / subj for root in mirror_roots]
         title = lesson.get("title", "")
         print(f"\n[{idx}/{len(new_lessons)}] [{lesson.get('subject', '')}] {title}")
         try:
@@ -98,6 +104,7 @@ def main() -> int:
                 output_dir=out_dir,
                 fast=fast,
                 lesson_title=title,
+                extra_output_dirs=mirror_dirs,
             )
             if ok:
                 success += 1

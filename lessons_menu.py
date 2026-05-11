@@ -17,9 +17,13 @@ from flask import Flask, jsonify, render_template_string, request
 
 from download_lessons import download
 from update_lessons_list import RECORDS_URL, update_lessons_file
+from config import load_env, get_paths
 
 QUALITIES = [360, 480, 720, 1080, 1440, 2160]
-DEFAULT_OUTPUT_ROOT = Path("videos")
+_ENV = load_env()
+_VIDEOS_DIRS: list[Path] = get_paths(_ENV, "VIDEOS_DIRS", fallback=[Path("videos")])
+DEFAULT_OUTPUT_ROOT = _VIDEOS_DIRS[0]
+MIRROR_OUTPUT_ROOTS: list[Path] = _VIDEOS_DIRS[1:]
 LESSONS_FILE = Path("lessons_list.txt")
 ARCHIVE_FILE = Path(".downloaded")
 DOWNLOADED_LESSONS_JSON = Path("downloaded_lessons.json")
@@ -298,12 +302,15 @@ def run_download_job(job_id: str, lesson: dict[str, str], quality: int, output_r
             jobs[job_id]["status"] = "running"
             jobs[job_id]["output_dir"] = str(output_dir.resolve())
 
+        subj = sanitize_folder_name(lesson["subject"])
+        mirror_dirs = [root / subj for root in MIRROR_OUTPUT_ROOTS]
         download_result = download(
             lesson["url"],
             quality,
             output_dir,
             fast=fast,
             lesson_title=lesson.get("title"),
+            extra_output_dirs=mirror_dirs,
         )
 
         with jobs_lock:
@@ -342,12 +349,15 @@ def run_batch_download_job(
                 jobs[job_id]["current_lesson"] = lesson["title"]
                 jobs[job_id]["output_dir"] = str(output_dir.resolve())
 
+            subj = sanitize_folder_name(lesson["subject"])
+            mirror_dirs = [root / subj for root in MIRROR_OUTPUT_ROOTS]
             result = download(
                 lesson["url"],
                 quality,
                 output_dir,
                 fast=fast,
                 lesson_title=lesson.get("title"),
+                extra_output_dirs=mirror_dirs,
             )
             if result:
                 downloaded += 1
