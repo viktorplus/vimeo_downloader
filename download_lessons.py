@@ -83,12 +83,20 @@ def _already_downloaded(url: str) -> bool:
     return f"vimeo {vid_id}" in ARCHIVE_FILE.read_text(encoding="utf-8")
 
 
+def _sanitize_filename(name: str) -> str:
+    """Заменить символы, недопустимые в имени файла на разных ФС."""
+    cleaned = re.sub(r'[<>:"/\\|?*\x00-\x1f]', "_", name or "")
+    cleaned = cleaned.strip(" .")
+    return cleaned[:200] if cleaned else "video"
+
+
 def _base_ydl_opts(
     quality: int,
     output_dir: Path,
     fast: bool,
     has_ffmpeg: bool,
     ffmpeg_path: str | None,
+    filename_stem: str | None = None,
 ) -> dict:
     if fast:
         format_selector = f"best[height<={quality}]/best"
@@ -97,9 +105,15 @@ def _base_ydl_opts(
     else:
         format_selector = f"best[height<={quality}]/best"
 
+    if filename_stem:
+        # Force literal stem — yt-dlp templates would re-interpret %()s sequences.
+        outtmpl = str(output_dir / filename_stem) + ".%(ext)s"
+    else:
+        outtmpl = str(output_dir / "%(title)s.%(ext)s")
+
     opts = {
         "format": format_selector,
-        "outtmpl": str(output_dir / "%(title)s.%(ext)s"),
+        "outtmpl": outtmpl,
         "progress_hooks": [progress_hook],
         "http_headers": {
             "User-Agent": (
@@ -178,11 +192,19 @@ def _build_attempts(base_opts: dict) -> list[dict]:
     return attempts
 
 
-def download(url: str, quality: int, output_dir: Path, fast: bool = False) -> bool:
+def download(
+    url: str,
+    quality: int,
+    output_dir: Path,
+    fast: bool = False,
+    lesson_title: str | None = None,
+) -> bool:
     """Скачать видео по URL.
 
     fast=True — скачать единым progressive-потоком (быстро, без склейки).
     fast=False — скачать раздельные видео+аудио и смёрджить через ffmpeg (лучшее качество).
+    lesson_title — если задан, используется как имя файла (вместо названия из Vimeo).
+        Защищает от коллизий, когда у нескольких видео одинаковый заголовок на Vimeo.
 
     Возвращает True если видео скачано, False если пропущено (уже было скачано ранее).
     """
@@ -201,7 +223,10 @@ def download(url: str, quality: int, output_dir: Path, fast: bool = False) -> bo
         print("\n  Внимание  : ffmpeg не найден, используем режим без склейки потоков")
         print("              Для максимального качества установите ffmpeg\n")
 
-    base_opts = _base_ydl_opts(quality, output_dir, fast, has_ffmpeg, ffmpeg_path)
+    filename_stem = _sanitize_filename(lesson_title) if lesson_title else None
+    base_opts = _base_ydl_opts(
+        quality, output_dir, fast, has_ffmpeg, ffmpeg_path, filename_stem=filename_stem
+    )
     attempts = _build_attempts(base_opts)
     candidates = _candidate_download_urls(url)
     referers = [

@@ -170,7 +170,7 @@ def sync_registry_from_existing_files(
             if not title_norm:
                 continue
 
-            if file_name_norm == title_norm or file_name_norm.startswith(title_norm) or title_norm in file_name_norm:
+            if file_name_norm == title_norm:
                 registry[key] = {
                     "downloaded_at": datetime.fromtimestamp(file_path.stat().st_mtime).strftime("%d.%m.%Y %H:%M:%S"),
                     "title": lesson.get("title", ""),
@@ -298,7 +298,13 @@ def run_download_job(job_id: str, lesson: dict[str, str], quality: int, output_r
             jobs[job_id]["status"] = "running"
             jobs[job_id]["output_dir"] = str(output_dir.resolve())
 
-        download_result = download(lesson["url"], quality, output_dir, fast=fast)
+        download_result = download(
+            lesson["url"],
+            quality,
+            output_dir,
+            fast=fast,
+            lesson_title=lesson.get("title"),
+        )
 
         with jobs_lock:
             jobs[job_id]["status"] = "done"
@@ -336,7 +342,13 @@ def run_batch_download_job(
                 jobs[job_id]["current_lesson"] = lesson["title"]
                 jobs[job_id]["output_dir"] = str(output_dir.resolve())
 
-            result = download(lesson["url"], quality, output_dir, fast=fast)
+            result = download(
+                lesson["url"],
+                quality,
+                output_dir,
+                fast=fast,
+                lesson_title=lesson.get("title"),
+            )
             if result:
                 downloaded += 1
             else:
