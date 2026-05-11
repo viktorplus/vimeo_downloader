@@ -84,8 +84,16 @@ def _already_downloaded(url: str) -> bool:
 
 
 def _sanitize_filename(name: str) -> str:
-    """Заменить символы, недопустимые в имени файла на разных ФС."""
-    cleaned = re.sub(r'[<>:"/\\|?*\x00-\x1f]', "_", name or "")
+    """Минимально подготовить имя для outtmpl yt-dlp.
+
+    yt-dlp сам заменит запрещённые ФС-символы (: * ? < > | " / \\) на
+    fullwidth-эквиваленты (： ＊ ？ ＜ ＞ ｜ ＂ ／ ＼). Здесь только защищаем
+    шаблон от '%' и убираем управляющие символы.
+    """
+    if not name:
+        return "video"
+    cleaned = name.replace("%", "％")
+    cleaned = re.sub(r"[\x00-\x1f]", "_", cleaned)
     cleaned = cleaned.strip(" .")
     return cleaned[:200] if cleaned else "video"
 

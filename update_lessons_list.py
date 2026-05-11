@@ -252,6 +252,62 @@ def _looks_like_login_page(driver) -> bool:
         return False
 
 
+def _auto_login(
+    driver,
+    login: str,
+    password: str,
+    progress_cb: Callable[[str], None] | None = None,
+    timeout_sec: int = 30,
+) -> bool:
+    """Заполнить форму логина LMS и нажать Submit.
+
+    Возвращает True, если после сабмита страница больше не выглядит как форма входа.
+    """
+    if not login or not password:
+        return False
+    if not _looks_like_login_page(driver):
+        # уже залогинены
+        return True
+
+    js_fill = """
+    const user = document.querySelector('input[name="username"], #username, input[type="email"]');
+    const pwd  = document.querySelector('input[name="password"], #password, input[type="password"]');
+    if (!user || !pwd) return false;
+    user.focus();
+    user.value = arguments[0];
+    user.dispatchEvent(new Event('input', { bubbles: true }));
+    pwd.focus();
+    pwd.value = arguments[1];
+    pwd.dispatchEvent(new Event('input', { bubbles: true }));
+    const form = pwd.closest('form');
+    if (form) {
+        const btn = form.querySelector('button[type="submit"], input[type="submit"], #loginbtn');
+        if (btn) { btn.click(); return true; }
+        form.submit();
+        return true;
+    }
+    return false;
+    """
+    try:
+        ok = bool(driver.execute_script(js_fill, login, password))
+    except Exception as exc:
+        _report_progress(f"Автологин: ошибка ввода — {exc}", progress_cb)
+        return False
+    if not ok:
+        _report_progress("Автологин: не найдена форма для отправки.", progress_cb)
+        return False
+
+    _report_progress("Автологин: форма отправлена, жду редиректа...", progress_cb)
+    deadline = time() + timeout_sec
+    while time() < deadline:
+        sleep(0.5)
+        if not _looks_like_login_page(driver):
+            _report_progress("Автологин: успешно.", progress_cb)
+            return True
+    _report_progress("Автологин: таймаут, форма всё ещё видна.", progress_cb)
+    return False
+
+
 def _is_on_records_page(driver, records_url: str) -> bool:
     try:
         current = (driver.current_url or "").split("#", 1)[0].rstrip("/")
@@ -266,6 +322,8 @@ def scrape_lms_lessons(
     prompt_for_enter: bool = True,
     timeout_sec: int = 900,
     progress_cb: Callable[[str], None] | None = None,
+    login: str = "",
+    password: str = "",
 ) -> list[dict[str, str]]:
     try:
         from selenium import webdriver
@@ -300,8 +358,17 @@ def scrape_lms_lessons(
         BROWSER_PROFILE_DIR.mkdir(parents=True, exist_ok=True)
         driver.get("https://lms.itcareerhub.de/")
 
+        if login and password:
+            _auto_login(driver, login, password, progress_cb=progress_cb)
+
         _report_progress("Открываю страницу записей LMS...", progress_cb)
         driver.get(url)
+
+        if login and password and _looks_like_login_page(driver):
+            # Запись может уводить на форму логина (если автологин не сработал на главной).
+            _auto_login(driver, login, password, progress_cb=progress_cb)
+            driver.get(url)
+
         snapshot = _save_page_snapshot(driver, "records_opened")
         if snapshot:
             _report_progress(f"Сохранен код страницы LMS: {snapshot}", progress_cb)
@@ -681,12 +748,16 @@ def update_lessons_file(
     prompt_for_enter: bool = True,
     timeout_sec: int = 900,
     progress_cb: Callable[[str], None] | None = None,
+    login: str = "",
+    password: str = "",
 ) -> dict[str, int | str]:
     fresh = scrape_lms_lessons(
         records_url,
         prompt_for_enter=prompt_for_enter,
         timeout_sec=timeout_sec,
         progress_cb=progress_cb,
+        login=login,
+        password=password,
     )
     return _merge_and_write(fresh, output, "LMS", progress_cb)
 
@@ -752,10 +823,19 @@ def main() -> None:
         )
         source = "HTML-файле"
     else:
+        from config import load_env
+        env = load_env()
+        login = env.get("LMS_LOGIN", "")
+        password = env.get("LMS_PASSWORD", "")
+        has_creds = bool(login and password)
+        if has_creds:
+            print("Используются учётные данные из .env (LMS_LOGIN, LMS_PASSWORD).")
         stats = update_lessons_file(
             output=Path(args.output),
             records_url=args.records_url,
-            prompt_for_enter=True,
+            prompt_for_enter=not has_creds,
+            login=login,
+            password=password,
         )
         source = "LMS"
 

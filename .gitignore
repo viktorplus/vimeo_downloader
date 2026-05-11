@@ -22,5 +22,14 @@ __pycache__/
 *.pyc
 *.pyo
 
+# Secrets
+.env
+
+# One-off migration tool logs
+reconcile_log.txt
+
+# Manually saved LMS page
+saved_records.html
+
 # Misc
 *.part
