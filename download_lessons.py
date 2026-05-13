@@ -83,16 +83,38 @@ def _already_downloaded(url: str) -> bool:
     return f"vimeo {vid_id}" in ARCHIVE_FILE.read_text(encoding="utf-8")
 
 
-def _sanitize_filename(name: str) -> str:
-    """Минимально подготовить имя для outtmpl yt-dlp.
+_FS_FORBIDDEN_REPLACEMENTS = {
+    ":": "：",   # FULLWIDTH COLON
+    "*": "＊",
+    "?": "？",
+    '"': "＂",
+    "<": "＜",
+    ">": "＞",
+    "|": "｜",
+    "/": "／",
+    "\\": "＼",
+}
 
-    yt-dlp сам заменит запрещённые ФС-символы (: * ? < > | " / \\) на
-    fullwidth-эквиваленты (： ＊ ？ ＜ ＞ ｜ ＂ ／ ＼). Здесь только защищаем
-    шаблон от '%' и убираем управляющие символы.
+
+def _sanitize_filename(name: str) -> str:
+    """Подготовить имя для outtmpl yt-dlp с fullwidth заменами.
+
+    Раньше полагались на yt-dlp: он сам заменяет : * ? < > | " на fullwidth.
+    Но при использовании в outtmpl yt-dlp читает PATH целиком и встречает ':'
+    как drive-separator → заменяет на '#' (видимо, чтобы не сломать Windows
+    путь). Поэтому делаем замены сами заранее.
+
+    Дополнительно: '%' защищаем от шаблонов yt-dlp, контрол-символы убираем,
+    приводим к Unicode NFC (Windows и Linux хранят имена в этой форме;
+    NFD создавал бы дубли с визуально одинаковым именем).
     """
     if not name:
         return "video"
-    cleaned = name.replace("%", "％")
+    import unicodedata
+    cleaned = unicodedata.normalize("NFC", name)
+    cleaned = cleaned.replace("%", "％")
+    for src, dst in _FS_FORBIDDEN_REPLACEMENTS.items():
+        cleaned = cleaned.replace(src, dst)
     cleaned = re.sub(r"[\x00-\x1f]", "_", cleaned)
     cleaned = cleaned.strip(" .")
     return cleaned[:200] if cleaned else "video"
@@ -226,13 +248,10 @@ def _mirror_to(src: Path, extra_dirs: list[Path]) -> None:
 def _find_downloaded_file(output_dir: Path, filename_stem: str | None) -> Path | None:
     if not filename_stem:
         return None
-    try:
-        from yt_dlp.utils import sanitize_filename as _ytdlp_sanitize
-        ytdlp_stem = _ytdlp_sanitize(filename_stem, restricted=False)
-    except Exception:
-        ytdlp_stem = filename_stem
+    # filename_stem уже прошёл _sanitize_filename — fullwidth-замены сделаны,
+    # yt-dlp не должен ничего менять при записи на диск.
     for ext in (".mp4", ".mkv", ".webm", ".m4v", ".mov"):
-        candidate = output_dir / f"{ytdlp_stem}{ext}"
+        candidate = output_dir / f"{filename_stem}{ext}"
         if candidate.exists():
             return candidate
     return None

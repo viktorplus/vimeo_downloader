@@ -252,6 +252,21 @@ def _looks_like_login_page(driver) -> bool:
         return False
 
 
+def _set_windows_clipboard(text: str) -> bool:
+    """Положить текст в буфер обмена Windows через 'clip' (UTF-16 LE)."""
+    import subprocess
+    try:
+        proc = subprocess.run(
+            ["clip"],
+            input=text.encode("utf-16le"),
+            check=True,
+            timeout=5,
+        )
+        return proc.returncode == 0
+    except Exception:
+        return False
+
+
 def _auto_login(
     driver,
     login: str,
@@ -261,40 +276,54 @@ def _auto_login(
 ) -> bool:
     """Заполнить форму логина LMS и нажать Submit.
 
+    Стратегия:
+    1. Поле логина — send_keys (обычные ASCII буквы и точка работают).
+    2. Поле пароля — paste из системного clipboard (Ctrl+V).
+       Это обходит проблему с keyboard layout: send_keys эмулирует физические
+       клавиши, поэтому символы вроде '@' на DE-раскладке транслируются в
+       неправильные коды. Paste работает с unicode напрямую.
+
     Возвращает True, если после сабмита страница больше не выглядит как форма входа.
     """
     if not login or not password:
         return False
     if not _looks_like_login_page(driver):
-        # уже залогинены
         return True
 
-    js_fill = """
-    const user = document.querySelector('input[name="username"], #username, input[type="email"]');
-    const pwd  = document.querySelector('input[name="password"], #password, input[type="password"]');
-    if (!user || !pwd) return false;
-    user.focus();
-    user.value = arguments[0];
-    user.dispatchEvent(new Event('input', { bubbles: true }));
-    pwd.focus();
-    pwd.value = arguments[1];
-    pwd.dispatchEvent(new Event('input', { bubbles: true }));
-    const form = pwd.closest('form');
-    if (form) {
-        const btn = form.querySelector('button[type="submit"], input[type="submit"], #loginbtn');
-        if (btn) { btn.click(); return true; }
-        form.submit();
-        return true;
-    }
-    return false;
-    """
     try:
-        ok = bool(driver.execute_script(js_fill, login, password))
+        from selenium.webdriver.common.by import By
+        from selenium.webdriver.common.keys import Keys
+        from selenium.webdriver.support.ui import WebDriverWait
+        from selenium.webdriver.support import expected_conditions as EC
+    except ImportError:
+        _report_progress("Автологин: selenium не доступен.", progress_cb)
+        return False
+
+    try:
+        wait = WebDriverWait(driver, 10)
+        user_field = wait.until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, 'input[name="username"]'))
+        )
+        pwd_field = driver.find_element(By.CSS_SELECTOR, 'input[name="password"]')
+    except Exception as exc:
+        _report_progress(f"Автологин: поля не найдены — {exc}", progress_cb)
+        return False
+
+    try:
+        user_field.clear()
+        user_field.send_keys(login)
+
+        pwd_field.click()
+        pwd_field.clear()
+        if _set_windows_clipboard(password):
+            pwd_field.send_keys(Keys.CONTROL, "v")
+        else:
+            _report_progress("Автологин: clipboard недоступен, использую send_keys.", progress_cb)
+            pwd_field.send_keys(password)
+
+        pwd_field.send_keys(Keys.RETURN)
     except Exception as exc:
         _report_progress(f"Автологин: ошибка ввода — {exc}", progress_cb)
-        return False
-    if not ok:
-        _report_progress("Автологин: не найдена форма для отправки.", progress_cb)
         return False
 
     _report_progress("Автологин: форма отправлена, жду редиректа...", progress_cb)
@@ -324,6 +353,7 @@ def scrape_lms_lessons(
     progress_cb: Callable[[str], None] | None = None,
     login: str = "",
     password: str = "",
+    headless: bool = False,
 ) -> list[dict[str, str]]:
     try:
         from selenium import webdriver
@@ -339,6 +369,9 @@ def scrape_lms_lessons(
     options.add_argument("--profile-directory=Default")
     options.add_argument("--no-first-run")
     options.add_argument("--no-default-browser-check")
+    if headless:
+        options.add_argument("--headless=new")
+        options.add_argument("--window-size=1280,900")
 
     fallback_temp_profile: Path | None = None
     try:
@@ -750,6 +783,7 @@ def update_lessons_file(
     progress_cb: Callable[[str], None] | None = None,
     login: str = "",
     password: str = "",
+    headless: bool = False,
 ) -> dict[str, int | str]:
     fresh = scrape_lms_lessons(
         records_url,
@@ -758,6 +792,7 @@ def update_lessons_file(
         progress_cb=progress_cb,
         login=login,
         password=password,
+        headless=headless,
     )
     return _merge_and_write(fresh, output, "LMS", progress_cb)
 

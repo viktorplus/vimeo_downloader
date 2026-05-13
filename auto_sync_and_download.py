@@ -41,11 +41,18 @@ def main() -> int:
     videos_dirs = get_paths(env, "VIDEOS_DIRS", fallback=[ROOT / "videos"])
     primary_dir = videos_dirs[0]
     mirror_roots = videos_dirs[1:]
+    headless = get_bool(env, "HEADLESS", False)
+    autologin = get_bool(env, "AUTOLOGIN", True)
 
-    if not login or not password:
+    if autologin and (not login or not password):
         print("ОШИБКА: в .env должны быть указаны LMS_LOGIN и LMS_PASSWORD")
-        print("Скопируйте .env.example в .env и заполните поля.")
+        print("Либо поставьте AUTOLOGIN=0 для ручного входа.")
         return 1
+
+    if not autologin:
+        # ручной режим: scrape_lms_lessons откроет окно и подождёт Enter
+        login = ""
+        password = ""
 
     print("=" * 70)
     print("ШАГ 1/2: обновление списка уроков из LMS")
@@ -63,6 +70,7 @@ def main() -> int:
         prompt_for_enter=False,
         login=login,
         password=password,
+        headless=headless,
     )
     print(
         f"Список обновлён. Всего в файле: {sync_stats['total']}, "
