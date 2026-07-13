@@ -186,8 +186,11 @@ def _candidate_download_urls(url: str) -> list[str]:
 
     # LMS иногда отдаёт фейковый "хэш", равный самому ID (data-whatever="ID?h=ID").
     # Такой хэш не существует на Vimeo → 404. Отбрасываем его и качаем vimeo.com/ID.
+    # Также подменяем исходный url на чистую форму, чтобы битый вариант ID/ID
+    # даже не пробовался (иначе он печатает ERROR перед успешным фолбэком).
     if hash_val and vid and hash_val == vid:
         hash_val = None
+        url = f"https://vimeo.com/{vid}"
 
     candidates: list[str] = []
     if vid and hash_val:
