@@ -184,6 +184,11 @@ def _candidate_download_urls(url: str) -> list[str]:
             if q_hash:
                 hash_val = q_hash.group(1)
 
+    # LMS иногда отдаёт фейковый "хэш", равный самому ID (data-whatever="ID?h=ID").
+    # Такой хэш не существует на Vimeo → 404. Отбрасываем его и качаем vimeo.com/ID.
+    if hash_val and vid and hash_val == vid:
+        hash_val = None
+
     candidates: list[str] = []
     if vid and hash_val:
         # Prefer canonical vimeo.com/ID/HASH form
