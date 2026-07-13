@@ -100,9 +100,8 @@ def main() -> int:
     failed: list[tuple[dict[str, str], str]] = []
 
     for idx, lesson in enumerate(new_lessons, start=1):
-        subj = m.sanitize_folder_name(lesson.get("subject", ""))
-        out_dir = primary_dir / subj
-        mirror_dirs = [root / subj for root in mirror_roots]
+        out_dir = m.subject_output_dir(primary_dir, lesson.get("subject", ""))
+        mirror_dirs = [m.subject_output_dir(root, lesson.get("subject", "")) for root in mirror_roots]
         title = lesson.get("title", "")
         print(f"\n[{idx}/{len(new_lessons)}] [{lesson.get('subject', '')}] {title}")
         try:

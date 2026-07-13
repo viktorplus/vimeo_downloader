@@ -24,11 +24,19 @@ _ENV = load_env()
 _VIDEOS_DIRS: list[Path] = get_paths(_ENV, "VIDEOS_DIRS", fallback=[Path("videos")])
 DEFAULT_OUTPUT_ROOT = _VIDEOS_DIRS[0]
 MIRROR_OUTPUT_ROOTS: list[Path] = _VIDEOS_DIRS[1:]
+CURRENT_GROUP = _ENV.get("CURRENT_GROUP", "").strip()
 LESSONS_FILE = Path("lessons_list.txt")
 ARCHIVE_FILE = Path(".downloaded")
 DOWNLOADED_LESSONS_JSON = Path("downloaded_lessons.json")
 DOWNLOADED_LESSONS_TXT = Path("downloaded_lessons.txt")
 ANSI_ESCAPE_RE = re.compile(r"\x1B\[[0-?]*[ -/]*[@-~]")
+
+
+def subject_output_dir(root: Path, subject: str) -> Path:
+    subj_dir = sanitize_folder_name(subject)
+    if CURRENT_GROUP:
+        return Path(root) / CURRENT_GROUP / subj_dir
+    return Path(root) / subj_dir
 
 
 def sanitize_folder_name(name: str) -> str:
@@ -297,13 +305,12 @@ ensure_downloaded_registry_files()
 
 def run_download_job(job_id: str, lesson: dict[str, str], quality: int, output_root: str, fast: bool = False) -> None:
     try:
-        output_dir = Path(output_root) / sanitize_folder_name(lesson["subject"])
+        output_dir = subject_output_dir(Path(output_root), lesson["subject"])
         with jobs_lock:
             jobs[job_id]["status"] = "running"
             jobs[job_id]["output_dir"] = str(output_dir.resolve())
 
-        subj = sanitize_folder_name(lesson["subject"])
-        mirror_dirs = [root / subj for root in MIRROR_OUTPUT_ROOTS]
+        mirror_dirs = [subject_output_dir(root, lesson["subject"]) for root in MIRROR_OUTPUT_ROOTS]
         download_result = download(
             lesson["url"],
             quality,
@@ -344,13 +351,12 @@ def run_batch_download_job(
     skipped = 0
     try:
         for idx, lesson in enumerate(lessons, start=1):
-            output_dir = Path(output_root) / sanitize_folder_name(lesson["subject"])
+            output_dir = subject_output_dir(Path(output_root), lesson["subject"])
             with jobs_lock:
                 jobs[job_id]["current_lesson"] = lesson["title"]
                 jobs[job_id]["output_dir"] = str(output_dir.resolve())
 
-            subj = sanitize_folder_name(lesson["subject"])
-            mirror_dirs = [root / subj for root in MIRROR_OUTPUT_ROOTS]
+            mirror_dirs = [subject_output_dir(root, lesson["subject"]) for root in MIRROR_OUTPUT_ROOTS]
             result = download(
                 lesson["url"],
                 quality,
